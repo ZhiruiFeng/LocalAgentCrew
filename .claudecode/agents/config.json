@@ -1,0 +1,212 @@
+{
+  "$schema": "./schema.json",
+  "version": "1.0.0",
+  "orchestration": {
+    "enabled": true,
+    "mode": "auto",
+    "parallel_execution": true,
+    "max_concurrent_agents": 3
+  },
+  "agents": {
+    "research": {
+      "type": "general-purpose",
+      "description": "Analyzes codebase, searches documentation, investigates dependencies and architecture",
+      "triggers": [
+        "how does",
+        "what is",
+        "explain",
+        "analyze",
+        "find where",
+        "search for",
+        "investigate"
+      ],
+      "capabilities": [
+        "code_search",
+        "documentation_lookup",
+        "dependency_analysis",
+        "architecture_exploration"
+      ],
+      "prompt_template": "prompts/research.txt",
+      "priority": 1
+    },
+    "implementation": {
+      "type": "general-purpose",
+      "description": "Writes new features, refactors code, implements functionality",
+      "triggers": [
+        "implement",
+        "create",
+        "add feature",
+        "build",
+        "develop",
+        "write code"
+      ],
+      "capabilities": [
+        "code_writing",
+        "refactoring",
+        "feature_implementation"
+      ],
+      "prompt_template": "prompts/implementation.txt",
+      "priority": 2,
+      "dependencies": ["research"]
+    },
+    "testing": {
+      "type": "general-purpose",
+      "description": "Creates tests, runs test suites, analyzes coverage",
+      "triggers": [
+        "test",
+        "unit test",
+        "coverage",
+        "e2e",
+        "integration test"
+      ],
+      "capabilities": [
+        "test_writing",
+        "test_execution",
+        "coverage_analysis"
+      ],
+      "prompt_template": "prompts/testing.txt",
+      "priority": 3,
+      "auto_trigger_after": ["implementation"]
+    },
+    "debug": {
+      "type": "general-purpose",
+      "description": "Identifies bugs, analyzes errors, proposes fixes",
+      "triggers": [
+        "debug",
+        "fix bug",
+        "error",
+        "not working",
+        "broken",
+        "issue with"
+      ],
+      "capabilities": [
+        "error_analysis",
+        "bug_detection",
+        "fix_proposal"
+      ],
+      "prompt_template": "prompts/debug.txt",
+      "priority": 1
+    },
+    "documentation": {
+      "type": "general-purpose",
+      "description": "Creates and updates documentation, adds code comments",
+      "triggers": [
+        "document",
+        "add comments",
+        "write docs",
+        "readme",
+        "api docs"
+      ],
+      "capabilities": [
+        "documentation_writing",
+        "comment_generation",
+        "api_documentation"
+      ],
+      "prompt_template": "prompts/documentation.txt",
+      "priority": 4
+    },
+    "performance": {
+      "type": "general-purpose",
+      "description": "Analyzes performance, identifies bottlenecks, suggests optimizations",
+      "triggers": [
+        "optimize",
+        "performance",
+        "slow",
+        "speed up",
+        "bottleneck",
+        "profile"
+      ],
+      "capabilities": [
+        "performance_analysis",
+        "optimization",
+        "profiling"
+      ],
+      "prompt_template": "prompts/performance.txt",
+      "priority": 2
+    },
+    "security": {
+      "type": "general-purpose",
+      "description": "Reviews code for security issues, identifies vulnerabilities",
+      "triggers": [
+        "security",
+        "vulnerability",
+        "secure",
+        "auth",
+        "sanitize",
+        "injection"
+      ],
+      "capabilities": [
+        "security_review",
+        "vulnerability_detection",
+        "security_best_practices"
+      ],
+      "prompt_template": "prompts/security.txt",
+      "priority": 1
+    }
+  },
+  "workflows": {
+    "feature_complete": {
+      "description": "Full feature implementation workflow",
+      "agents": ["research", "implementation", "testing", "documentation"],
+      "sequential": false,
+      "stages": [
+        {
+          "name": "analysis",
+          "agents": ["research"],
+          "parallel": false
+        },
+        {
+          "name": "development",
+          "agents": ["implementation"],
+          "parallel": false
+        },
+        {
+          "name": "quality",
+          "agents": ["testing", "security"],
+          "parallel": true
+        },
+        {
+          "name": "finalization",
+          "agents": ["documentation"],
+          "parallel": false
+        }
+      ]
+    },
+    "bug_fix": {
+      "description": "Debug and fix workflow",
+      "agents": ["debug", "testing"],
+      "sequential": true
+    },
+    "code_review": {
+      "description": "Comprehensive code review",
+      "agents": ["security", "performance", "testing"],
+      "sequential": false
+    }
+  },
+  "routing": {
+    "strategy": "keyword_match",
+    "fallback_agent": "research",
+    "multi_agent_threshold": 2,
+    "context_analysis": {
+      "enabled": true,
+      "use_file_context": true,
+      "use_git_context": true
+    }
+  },
+  "usage_tracking": {
+    "enabled": true,
+    "trigger_prefix": "[USAGE]",
+    "storage": {
+      "questions_dir": "questions",
+      "interactions_dir": "interactions",
+      "results_dir": "results"
+    },
+    "timestamp_format": "YYYY-MM-DD_HH-mm-ss",
+    "features": {
+      "store_prompt": true,
+      "store_interactions": true,
+      "store_results": true,
+      "auto_create_result_subfolder": true
+    }
+  }
+}

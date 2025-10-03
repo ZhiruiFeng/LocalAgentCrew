@@ -1,0 +1,42 @@
+{
+  "name": "code_review",
+  "description": "Comprehensive code review checking security, performance, and quality",
+  "version": "1.0.0",
+  "stages": [
+    {
+      "name": "comprehensive_review",
+      "description": "Multi-perspective code analysis",
+      "agents": ["security", "performance", "testing"],
+      "parallel": true,
+      "required": true,
+      "outputs": [
+        "security_findings",
+        "performance_analysis",
+        "test_coverage_report"
+      ]
+    },
+    {
+      "name": "documentation_review",
+      "description": "Check documentation completeness",
+      "agents": ["documentation"],
+      "parallel": false,
+      "required": false,
+      "dependencies": ["comprehensive_review"],
+      "outputs": [
+        "documentation_gaps",
+        "improvement_suggestions"
+      ]
+    }
+  ],
+  "success_criteria": [
+    "No critical security issues",
+    "Performance is acceptable",
+    "Test coverage is adequate",
+    "Code is well documented"
+  ],
+  "triggers": [
+    "review code",
+    "code review",
+    "analyze code quality"
+  ]
+}

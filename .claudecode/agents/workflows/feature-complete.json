@@ -1,0 +1,67 @@
+{
+  "name": "feature_complete",
+  "description": "Complete feature development workflow with research, implementation, testing, and documentation",
+  "version": "1.0.0",
+  "stages": [
+    {
+      "name": "research_and_planning",
+      "description": "Analyze codebase and plan implementation",
+      "agents": ["research"],
+      "parallel": false,
+      "required": true,
+      "outputs": [
+        "relevant_files",
+        "architecture_insights",
+        "implementation_recommendations"
+      ]
+    },
+    {
+      "name": "implementation",
+      "description": "Implement the feature",
+      "agents": ["implementation"],
+      "parallel": false,
+      "required": true,
+      "dependencies": ["research_and_planning"],
+      "outputs": [
+        "code_changes",
+        "new_files",
+        "integration_points"
+      ]
+    },
+    {
+      "name": "quality_assurance",
+      "description": "Test and secure the implementation",
+      "agents": ["testing", "security"],
+      "parallel": true,
+      "required": true,
+      "dependencies": ["implementation"],
+      "outputs": [
+        "test_results",
+        "security_review",
+        "coverage_report"
+      ]
+    },
+    {
+      "name": "finalization",
+      "description": "Document and finalize",
+      "agents": ["documentation"],
+      "parallel": false,
+      "required": false,
+      "dependencies": ["quality_assurance"],
+      "outputs": [
+        "documentation",
+        "usage_examples"
+      ]
+    }
+  ],
+  "success_criteria": [
+    "All tests pass",
+    "No critical security issues",
+    "Code is documented"
+  ],
+  "triggers": [
+    "implement complete feature",
+    "build new feature",
+    "develop feature"
+  ]
+}
