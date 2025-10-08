@@ -10,6 +10,8 @@
   "agents": {
     "research": {
       "type": "general-purpose",
+      "category": "technical/development",
+      "subcategory": "analysis",
       "description": "Analyzes codebase, searches documentation, investigates dependencies and architecture",
       "triggers": [
         "how does",
@@ -31,6 +33,8 @@
     },
     "implementation": {
       "type": "general-purpose",
+      "category": "technical/development",
+      "subcategory": "creation",
       "description": "Writes new features, refactors code, implements functionality",
       "triggers": [
         "implement",
@@ -51,6 +55,8 @@
     },
     "testing": {
       "type": "general-purpose",
+      "category": "technical/quality-assurance",
+      "subcategory": "validation",
       "description": "Creates tests, runs test suites, analyzes coverage",
       "triggers": [
         "test",
@@ -70,6 +76,8 @@
     },
     "debug": {
       "type": "general-purpose",
+      "category": "technical/development",
+      "subcategory": "analysis",
       "description": "Identifies bugs, analyzes errors, proposes fixes",
       "triggers": [
         "debug",
@@ -89,6 +97,8 @@
     },
     "documentation": {
       "type": "general-purpose",
+      "category": "technical/documentation",
+      "subcategory": "creation",
       "description": "Creates and updates documentation, adds code comments",
       "triggers": [
         "document",
@@ -107,6 +117,8 @@
     },
     "performance": {
       "type": "general-purpose",
+      "category": "technical/quality-assurance",
+      "subcategory": "analysis",
       "description": "Analyzes performance, identifies bottlenecks, suggests optimizations",
       "triggers": [
         "optimize",
@@ -126,6 +138,8 @@
     },
     "security": {
       "type": "general-purpose",
+      "category": "technical/quality-assurance",
+      "subcategory": "analysis",
       "description": "Reviews code for security issues, identifies vulnerabilities",
       "triggers": [
         "security",
@@ -142,6 +156,190 @@
       ],
       "prompt_template": "prompts/security.txt",
       "priority": 1
+    },
+    "writing-assistant": {
+      "type": "general-purpose",
+      "category": "productivity/writing",
+      "subcategory": "creation",
+      "description": "Helps with creative writing, email drafting, content creation, and text improvement",
+      "triggers": [
+        "write email",
+        "draft",
+        "compose",
+        "creative writing",
+        "improve writing",
+        "rewrite",
+        "proofread"
+      ],
+      "capabilities": [
+        "email_composition",
+        "creative_writing",
+        "text_improvement",
+        "proofreading",
+        "tone_adjustment"
+      ],
+      "prompt_template": "prompts/writing-assistant.txt",
+      "priority": 2
+    },
+    "task-management": {
+      "type": "general-purpose",
+      "category": "productivity/organization",
+      "subcategory": "planning",
+      "description": "Helps organize tasks, create action plans, manage schedules, and track progress",
+      "triggers": [
+        "organize tasks",
+        "create plan",
+        "schedule",
+        "prioritize",
+        "track progress",
+        "todo list"
+      ],
+      "capabilities": [
+        "task_planning",
+        "priority_setting",
+        "schedule_management",
+        "progress_tracking",
+        "action_plans"
+      ],
+      "prompt_template": "prompts/task-management.txt",
+      "priority": 2
+    },
+    "research-assistant": {
+      "type": "general-purpose",
+      "category": "productivity/research",
+      "subcategory": "analysis",
+      "description": "Conducts general research, summarizes information, compares options, and provides insights",
+      "triggers": [
+        "research",
+        "summarize",
+        "compare",
+        "find information",
+        "learn about",
+        "what's the best"
+      ],
+      "capabilities": [
+        "web_research",
+        "information_synthesis",
+        "comparison_analysis",
+        "summarization",
+        "insight_generation"
+      ],
+      "prompt_template": "prompts/research-assistant.txt",
+      "priority": 2
+    },
+    "market-researcher": {
+      "type": "general-purpose",
+      "category": "business/market-analysis",
+      "subcategory": "research",
+      "description": "Gathers and analyzes market data, industry trends, market size, and growth opportunities",
+      "triggers": [
+        "market research",
+        "market size",
+        "industry trends",
+        "market data",
+        "market overview",
+        "industry analysis"
+      ],
+      "capabilities": [
+        "market_data_collection",
+        "industry_research",
+        "market_sizing",
+        "trend_identification",
+        "statistical_analysis"
+      ],
+      "prompt_template": "prompts/market-researcher.txt",
+      "priority": 1
+    },
+    "competitor-analyst": {
+      "type": "general-purpose",
+      "category": "business/market-analysis",
+      "subcategory": "analysis",
+      "description": "Analyzes competitors, competitive landscape, market positioning, and competitive advantages",
+      "triggers": [
+        "competitor analysis",
+        "competitive landscape",
+        "competition",
+        "market share",
+        "competitive advantage",
+        "benchmark"
+      ],
+      "capabilities": [
+        "competitor_identification",
+        "competitive_analysis",
+        "market_positioning",
+        "benchmarking",
+        "competitive_intelligence"
+      ],
+      "prompt_template": "prompts/competitor-analyst.txt",
+      "priority": 1
+    },
+    "customer-insights": {
+      "type": "general-purpose",
+      "category": "business/market-analysis",
+      "subcategory": "analysis",
+      "description": "Analyzes customer behavior, segments, personas, needs, and pain points",
+      "triggers": [
+        "customer analysis",
+        "customer segments",
+        "buyer persona",
+        "customer needs",
+        "target audience",
+        "customer behavior"
+      ],
+      "capabilities": [
+        "customer_segmentation",
+        "persona_development",
+        "behavior_analysis",
+        "needs_assessment",
+        "journey_mapping"
+      ],
+      "prompt_template": "prompts/customer-insights.txt",
+      "priority": 1
+    },
+    "trend-forecaster": {
+      "type": "general-purpose",
+      "category": "business/market-analysis",
+      "subcategory": "forecasting",
+      "description": "Identifies emerging trends, predicts market movements, and forecasts future opportunities",
+      "triggers": [
+        "forecast",
+        "predict",
+        "trends",
+        "future outlook",
+        "emerging trends",
+        "market prediction"
+      ],
+      "capabilities": [
+        "trend_analysis",
+        "predictive_analysis",
+        "opportunity_identification",
+        "scenario_planning",
+        "market_forecasting"
+      ],
+      "prompt_template": "prompts/trend-forecaster.txt",
+      "priority": 2
+    },
+    "swot-analyst": {
+      "type": "general-purpose",
+      "category": "business/market-analysis",
+      "subcategory": "strategic-planning",
+      "description": "Conducts SWOT analysis, strategic assessment, and provides strategic recommendations",
+      "triggers": [
+        "swot analysis",
+        "strengths weaknesses",
+        "opportunities threats",
+        "strategic analysis",
+        "business assessment"
+      ],
+      "capabilities": [
+        "swot_analysis",
+        "strategic_assessment",
+        "risk_analysis",
+        "opportunity_evaluation",
+        "strategic_recommendations"
+      ],
+      "prompt_template": "prompts/swot-analyst.txt",
+      "priority": 2
     }
   },
   "workflows": {
@@ -181,6 +379,72 @@
       "description": "Comprehensive code review",
       "agents": ["security", "performance", "testing"],
       "sequential": false
+    },
+    "market_analysis_comprehensive": {
+      "description": "Complete market analysis workflow covering all aspects",
+      "agents": ["market-researcher", "competitor-analyst", "customer-insights", "trend-forecaster", "swot-analyst"],
+      "sequential": false,
+      "stages": [
+        {
+          "name": "market_research",
+          "agents": ["market-researcher"],
+          "parallel": false
+        },
+        {
+          "name": "market_intelligence",
+          "agents": ["competitor-analyst", "customer-insights"],
+          "parallel": true
+        },
+        {
+          "name": "strategic_analysis",
+          "agents": ["trend-forecaster", "swot-analyst"],
+          "parallel": true
+        }
+      ]
+    },
+    "market_entry_analysis": {
+      "description": "Analyze market entry opportunity",
+      "agents": ["market-researcher", "competitor-analyst", "trend-forecaster"],
+      "sequential": false,
+      "stages": [
+        {
+          "name": "market_sizing",
+          "agents": ["market-researcher"],
+          "parallel": false
+        },
+        {
+          "name": "competitive_assessment",
+          "agents": ["competitor-analyst", "trend-forecaster"],
+          "parallel": true
+        }
+      ]
+    },
+    "competitive_intelligence": {
+      "description": "Deep competitor and market positioning analysis",
+      "agents": ["competitor-analyst", "market-researcher", "trend-forecaster"],
+      "sequential": true
+    },
+    "customer_discovery": {
+      "description": "In-depth customer research and segmentation",
+      "agents": ["customer-insights", "market-researcher"],
+      "sequential": false
+    },
+    "strategic_planning": {
+      "description": "Strategic assessment and planning workflow",
+      "agents": ["swot-analyst", "trend-forecaster", "competitor-analyst"],
+      "sequential": false,
+      "stages": [
+        {
+          "name": "environmental_scan",
+          "agents": ["trend-forecaster", "competitor-analyst"],
+          "parallel": true
+        },
+        {
+          "name": "strategic_synthesis",
+          "agents": ["swot-analyst"],
+          "parallel": false
+        }
+      ]
     }
   },
   "routing": {

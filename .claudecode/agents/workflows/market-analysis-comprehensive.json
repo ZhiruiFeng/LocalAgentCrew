@@ -1,0 +1,80 @@
+{
+  "name": "market_analysis_comprehensive",
+  "version": "1.0.0",
+  "description": "Complete market analysis workflow covering market research, competitive intelligence, customer insights, trend forecasting, and strategic assessment",
+  "triggers": [
+    "complete market analysis",
+    "comprehensive market analysis",
+    "full market assessment",
+    "market analysis report"
+  ],
+  "stages": [
+    {
+      "name": "market_research",
+      "description": "Gather foundational market data and industry overview",
+      "agents": ["market-researcher"],
+      "parallel": false,
+      "objective": "Establish market context, size, growth, and structure",
+      "deliverables": [
+        "Market size and growth metrics",
+        "Industry landscape overview",
+        "Key market trends",
+        "Market segmentation"
+      ]
+    },
+    {
+      "name": "market_intelligence",
+      "description": "Analyze competitive landscape and customer dynamics in parallel",
+      "agents": ["competitor-analyst", "customer-insights"],
+      "parallel": true,
+      "objective": "Understand competitive positioning and customer needs",
+      "deliverables": [
+        "Competitive landscape analysis",
+        "Competitor profiles and benchmarking",
+        "Customer segments and personas",
+        "Customer needs and pain points"
+      ]
+    },
+    {
+      "name": "strategic_analysis",
+      "description": "Forecast future trends and conduct strategic assessment",
+      "agents": ["trend-forecaster", "swot-analyst"],
+      "parallel": true,
+      "objective": "Identify future opportunities and strategic positioning",
+      "deliverables": [
+        "Trend forecast and predictions",
+        "Emerging opportunities",
+        "SWOT analysis",
+        "Strategic recommendations"
+      ],
+      "dependencies": ["market_research", "market_intelligence"]
+    }
+  ],
+  "final_output": {
+    "format": "Comprehensive Market Analysis Report",
+    "sections": [
+      "Executive Summary",
+      "Market Overview (from market-researcher)",
+      "Competitive Landscape (from competitor-analyst)",
+      "Customer Insights (from customer-insights)",
+      "Trend Forecast (from trend-forecaster)",
+      "SWOT Analysis (from swot-analyst)",
+      "Strategic Recommendations",
+      "Appendices"
+    ]
+  },
+  "use_cases": [
+    "Entering a new market",
+    "Strategic planning cycle",
+    "Investment decision support",
+    "Business plan development",
+    "Board presentation preparation"
+  ],
+  "estimated_duration": "Complete analysis across all stages",
+  "output_artifacts": [
+    "Market analysis report (comprehensive)",
+    "Executive summary deck",
+    "Data tables and charts",
+    "Strategic recommendation matrix"
+  ]
+}

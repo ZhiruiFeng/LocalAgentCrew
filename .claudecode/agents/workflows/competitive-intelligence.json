@@ -1,0 +1,89 @@
+{
+  "name": "competitive_intelligence",
+  "version": "1.0.0",
+  "description": "Deep dive into competitive landscape, competitor strategies, and market positioning",
+  "triggers": [
+    "competitive intelligence",
+    "competitor analysis deep dive",
+    "competitive landscape analysis",
+    "benchmark against competitors"
+  ],
+  "stages": [
+    {
+      "name": "market_context",
+      "description": "Establish market context for competitive analysis",
+      "agents": ["market-researcher"],
+      "parallel": false,
+      "objective": "Understand market structure and dynamics",
+      "deliverables": [
+        "Market structure overview",
+        "Industry value chain",
+        "Market segmentation"
+      ]
+    },
+    {
+      "name": "competitor_deep_dive",
+      "description": "Comprehensive competitor analysis",
+      "agents": ["competitor-analyst"],
+      "parallel": false,
+      "objective": "Detailed competitor profiling and benchmarking",
+      "deliverables": [
+        "Detailed competitor profiles",
+        "Competitive positioning matrix",
+        "Benchmarking analysis",
+        "Competitive strategies assessment"
+      ],
+      "dependencies": ["market_context"]
+    },
+    {
+      "name": "future_competitive_landscape",
+      "description": "Forecast competitive dynamics and emerging threats",
+      "agents": ["trend-forecaster"],
+      "parallel": false,
+      "objective": "Anticipate competitive shifts and disruptions",
+      "deliverables": [
+        "Competitive trend forecast",
+        "Emerging competitor threats",
+        "Potential market disruptors",
+        "Competitive scenario planning"
+      ],
+      "dependencies": ["competitor_deep_dive"]
+    }
+  ],
+  "final_output": {
+    "format": "Competitive Intelligence Report",
+    "sections": [
+      "Executive Summary",
+      "Market Structure and Dynamics",
+      "Detailed Competitor Analysis",
+      "Competitive Positioning and Benchmarking",
+      "Competitive Trends and Future Outlook",
+      "Strategic Implications",
+      "Recommended Actions"
+    ]
+  },
+  "intelligence_focus_areas": [
+    "Competitor strategies and positioning",
+    "Competitive strengths and weaknesses",
+    "Competitive threats and opportunities",
+    "Market share dynamics",
+    "Pricing strategies",
+    "Product/service differentiation",
+    "Go-to-market approaches",
+    "Innovation and R&D activities"
+  ],
+  "use_cases": [
+    "Competitive strategy development",
+    "Positioning and differentiation",
+    "Competitive response planning",
+    "M&A target identification",
+    "Quarterly competitive reviews"
+  ],
+  "estimated_duration": "Sequential deep-dive analysis",
+  "output_artifacts": [
+    "Competitive intelligence report",
+    "Competitor comparison matrices",
+    "Positioning maps",
+    "Competitive response playbook"
+  ]
+}

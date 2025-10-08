@@ -45,11 +45,57 @@ The main Claude instance:
 - Coordinates agent execution
 - Aggregates findings into coherent response
 
+## Agent Categories
+
+The agent system is organized using a **hybrid categorization approach** that groups agents by domain and activity type. This structure supports both technical development tasks and general productivity needs.
+
+### Category Structure
+
+```
+Technical/
+  ├─ Development (analysis & creation)
+  │   ├─ research
+  │   ├─ implementation
+  │   └─ debug
+  ├─ Quality Assurance (validation & analysis)
+  │   ├─ testing
+  │   ├─ security
+  │   └─ performance
+  └─ Documentation (creation)
+      └─ documentation
+
+Productivity/
+  ├─ Writing (creation)
+  │   └─ writing-assistant
+  ├─ Organization (planning)
+  │   └─ task-management
+  └─ Research (analysis)
+      └─ research-assistant
+
+Business/
+  └─ Market Analysis
+      ├─ market-researcher (research)
+      ├─ competitor-analyst (analysis)
+      ├─ customer-insights (analysis)
+      ├─ trend-forecaster (forecasting)
+      └─ swot-analyst (strategic-planning)
+```
+
+### Category-Based Routing
+
+You can filter agents by category using the orchestrator:
+- Query only technical agents: Focus on code-related tasks
+- Query only productivity agents: Focus on non-coding tasks
+- Mix categories: Get multi-domain assistance
+
 ## Available Agents
 
 Each agent has a unique color scheme in terminal output for easy identification and visual organization.
 
-### 🔍 Research Agent (Cyan)
+### Technical Agents
+
+#### 🔍 Research Agent (Cyan)
+**Category**: `technical/development` | **Subcategory**: `analysis`
 **Triggers**: `how does`, `what is`, `explain`, `analyze`, `find where`, `search for`, `investigate`
 
 **Capabilities**:
@@ -63,7 +109,8 @@ Each agent has a unique color scheme in terminal output for easy identification 
 - "Find where user data is validated"
 - "Analyze the database schema"
 
-### 🛠️ Implementation Agent (Green)
+#### 🛠️ Implementation Agent (Green)
+**Category**: `technical/development` | **Subcategory**: `creation`
 **Triggers**: `implement`, `create`, `add feature`, `build`, `develop`, `write code`
 
 **Capabilities**:
@@ -76,20 +123,8 @@ Each agent has a unique color scheme in terminal output for easy identification 
 - "Add pagination to the API"
 - "Refactor the authentication module"
 
-### 🧪 Testing Agent (Yellow)
-**Triggers**: `test`, `unit test`, `coverage`, `e2e`, `integration test`
-
-**Capabilities**:
-- Test writing (unit, integration, e2e)
-- Test execution
-- Coverage analysis
-
-**Use Cases**:
-- "Write tests for the payment module"
-- "Run all tests and fix failures"
-- "Analyze test coverage"
-
-### 🐛 Debug Agent (Red)
+#### 🐛 Debug Agent (Red)
+**Category**: `technical/development` | **Subcategory**: `analysis`
 **Triggers**: `debug`, `fix bug`, `error`, `not working`, `broken`, `issue with`
 
 **Capabilities**:
@@ -102,20 +137,36 @@ Each agent has a unique color scheme in terminal output for easy identification 
 - "Fix the TypeError in checkout"
 - "Investigate memory leak"
 
-### 📝 Documentation Agent (Blue)
-**Triggers**: `document`, `add comments`, `write docs`, `readme`, `api docs`
+#### 🧪 Testing Agent (Yellow)
+**Category**: `technical/quality-assurance` | **Subcategory**: `validation`
+**Triggers**: `test`, `unit test`, `coverage`, `e2e`, `integration test`
 
 **Capabilities**:
-- Documentation creation
-- Code commenting
-- API documentation
+- Test writing (unit, integration, e2e)
+- Test execution
+- Coverage analysis
 
 **Use Cases**:
-- "Document the API endpoints"
-- "Add JSDoc comments to utils"
-- "Update the README"
+- "Write tests for the payment module"
+- "Run all tests and fix failures"
+- "Analyze test coverage"
 
-### ⚡ Performance Agent (Magenta)
+#### 🔒 Security Agent (Bright Red)
+**Category**: `technical/quality-assurance` | **Subcategory**: `analysis`
+**Triggers**: `security`, `vulnerability`, `secure`, `auth`, `sanitize`, `injection`
+
+**Capabilities**:
+- Security review
+- Vulnerability detection
+- Best practices enforcement
+
+**Use Cases**:
+- "Review authentication security"
+- "Check for SQL injection vulnerabilities"
+- "Audit API security"
+
+#### ⚡ Performance Agent (Magenta)
+**Category**: `technical/quality-assurance` | **Subcategory**: `analysis`
 **Triggers**: `optimize`, `performance`, `slow`, `speed up`, `bottleneck`, `profile`
 
 **Capabilities**:
@@ -128,18 +179,158 @@ Each agent has a unique color scheme in terminal output for easy identification 
 - "Find performance bottlenecks"
 - "Speed up the dashboard load"
 
-### 🔒 Security Agent (Bright Red)
-**Triggers**: `security`, `vulnerability`, `secure`, `auth`, `sanitize`, `injection`
+#### 📝 Documentation Agent (Blue)
+**Category**: `technical/documentation` | **Subcategory**: `creation`
+**Triggers**: `document`, `add comments`, `write docs`, `readme`, `api docs`
 
 **Capabilities**:
-- Security review
-- Vulnerability detection
-- Best practices enforcement
+- Documentation creation
+- Code commenting
+- API documentation
 
 **Use Cases**:
-- "Review authentication security"
-- "Check for SQL injection vulnerabilities"
-- "Audit API security"
+- "Document the API endpoints"
+- "Add JSDoc comments to utils"
+- "Update the README"
+
+### Productivity Agents
+
+#### ✍️ Writing Assistant Agent (Purple)
+**Category**: `productivity/writing` | **Subcategory**: `creation`
+**Triggers**: `write email`, `draft`, `compose`, `creative writing`, `improve writing`, `rewrite`, `proofread`
+
+**Capabilities**:
+- Email composition (professional, casual, formal)
+- Creative writing assistance
+- Text improvement and refinement
+- Proofreading and grammar checking
+- Tone adjustment
+
+**Use Cases**:
+- "Write a professional email to my client"
+- "Help me improve this blog post draft"
+- "Proofread this document"
+- "Compose a friendly message to my team"
+
+#### 📋 Task Management Agent (Orange)
+**Category**: `productivity/organization` | **Subcategory**: `planning`
+**Triggers**: `organize tasks`, `create plan`, `schedule`, `prioritize`, `track progress`, `todo list`
+
+**Capabilities**:
+- Task planning and breakdown
+- Priority setting and time management
+- Schedule management
+- Progress tracking
+- Action plan creation
+
+**Use Cases**:
+- "Help me organize my project tasks"
+- "Create a plan for launching this feature"
+- "Prioritize my weekly tasks"
+- "Break down this complex project into steps"
+
+#### 🔎 Research Assistant Agent (Teal)
+**Category**: `productivity/research` | **Subcategory**: `analysis`
+**Triggers**: `research`, `summarize`, `compare`, `find information`, `learn about`, `what's the best`
+
+**Capabilities**:
+- Web research and information gathering
+- Information synthesis and summarization
+- Comparison and evaluation analysis
+- Insight generation
+
+**Use Cases**:
+- "Research the best practices for remote work"
+- "Compare different project management tools"
+- "Summarize this article for me"
+- "What's the best approach for learning Python?"
+
+### Business/Market Analysis Agents
+
+#### 📊 Market Researcher Agent (Bright Cyan)
+**Category**: `business/market-analysis` | **Subcategory**: `research`
+**Triggers**: `market research`, `market size`, `industry trends`, `market data`, `market overview`, `industry analysis`
+
+**Capabilities**:
+- Market data collection and analysis
+- Industry research and trend identification
+- Market sizing (TAM/SAM/SOM)
+- Growth opportunity identification
+- Statistical analysis
+
+**Use Cases**:
+- "Conduct market research for the AI automation industry"
+- "What's the market size for electric vehicles?"
+- "Analyze industry trends in fintech"
+- "Research the SaaS market opportunity"
+
+#### 🎯 Competitor Analyst Agent (Bright Yellow)
+**Category**: `business/market-analysis` | **Subcategory**: `analysis`
+**Triggers**: `competitor analysis`, `competitive landscape`, `competition`, `market share`, `competitive advantage`, `benchmark`
+
+**Capabilities**:
+- Competitor identification and profiling
+- Competitive landscape mapping
+- Market positioning analysis
+- Benchmarking
+- Competitive intelligence gathering
+
+**Use Cases**:
+- "Analyze competitors in the cloud storage market"
+- "Who are the main competitors for project management software?"
+- "Benchmark our features against competitors"
+- "What's the competitive landscape for e-commerce platforms?"
+
+#### 👥 Customer Insights Agent (Bright Magenta)
+**Category**: `business/market-analysis` | **Subcategory**: `analysis`
+**Triggers**: `customer analysis`, `customer segments`, `buyer persona`, `customer needs`, `target audience`, `customer behavior`
+
+**Capabilities**:
+- Customer segmentation and profiling
+- Buyer persona development
+- Behavior analysis
+- Needs and pain points assessment
+- Customer journey mapping
+
+**Use Cases**:
+- "Create buyer personas for our B2B SaaS product"
+- "Analyze customer segments in the fitness app market"
+- "What are the main customer pain points in online education?"
+- "Map the customer journey for subscription services"
+
+#### 🔮 Trend Forecaster Agent (Bright Green)
+**Category**: `business/market-analysis` | **Subcategory**: `forecasting`
+**Triggers**: `forecast`, `predict`, `trends`, `future outlook`, `emerging trends`, `market prediction`
+
+**Capabilities**:
+- Trend identification and analysis
+- Predictive market analysis
+- Opportunity identification
+- Scenario planning
+- Future outlook development
+
+**Use Cases**:
+- "What are the emerging trends in remote work technology?"
+- "Forecast the future of the retail industry"
+- "Predict market movements in sustainable energy"
+- "What trends will impact healthcare in the next 5 years?"
+
+#### 🎲 SWOT Analyst Agent (Bright Blue)
+**Category**: `business/market-analysis` | **Subcategory**: `strategic-planning`
+**Triggers**: `swot analysis`, `strengths weaknesses`, `opportunities threats`, `strategic analysis`, `business assessment`
+
+**Capabilities**:
+- Comprehensive SWOT analysis
+- Strategic assessment and planning
+- Risk and opportunity evaluation
+- Competitive positioning analysis
+- Strategic recommendations
+
+**Use Cases**:
+- "Conduct a SWOT analysis for entering the European market"
+- "Analyze strengths and weaknesses of our mobile app"
+- "What are the opportunities and threats in the AI industry?"
+- "Strategic assessment for our new product line"
 
 ## Predefined Workflows
 
@@ -187,6 +378,76 @@ Each agent has a unique color scheme in terminal output for easy identification 
 2. **Documentation Review** (Documentation Agent)
    - Checks documentation completeness
 
+### Market Analysis Comprehensive Workflow
+**Trigger**: "complete market analysis", "comprehensive market analysis", "full market assessment"
+
+**Stages**:
+1. **Market Research** (Market Researcher Agent)
+   - Market sizing and structure
+   - Industry landscape overview
+   - Key market trends
+
+2. **Market Intelligence** (Competitor Analyst + Customer Insights Agents - Parallel)
+   - Competitive landscape analysis
+   - Customer segmentation and personas
+   - Market positioning
+
+3. **Strategic Analysis** (Trend Forecaster + SWOT Analyst Agents - Parallel)
+   - Future trend forecasting
+   - Emerging opportunities
+   - SWOT analysis and strategic recommendations
+
+### Market Entry Analysis Workflow
+**Trigger**: "market entry analysis", "market entry opportunity", "should we enter this market"
+
+**Stages**:
+1. **Market Sizing** (Market Researcher Agent)
+   - TAM/SAM/SOM analysis
+   - Market attractiveness assessment
+   - Entry barriers
+
+2. **Competitive Assessment** (Competitor Analyst + Trend Forecaster Agents - Parallel)
+   - Competitive landscape analysis
+   - Future market trends
+   - Competitive gaps and opportunities
+
+### Competitive Intelligence Workflow
+**Trigger**: "competitive intelligence", "competitor analysis deep dive", "competitive landscape"
+
+**Stages**:
+1. **Market Context** (Market Researcher Agent)
+   - Market structure overview
+   - Industry value chain
+
+2. **Competitor Deep Dive** (Competitor Analyst Agent)
+   - Detailed competitor profiling
+   - Competitive benchmarking
+
+3. **Future Competitive Landscape** (Trend Forecaster Agent)
+   - Competitive trend forecast
+   - Emerging competitive threats
+
+### Customer Discovery Workflow
+**Trigger**: "customer discovery", "customer research", "understand our customers"
+
+**Stages**:
+- **Customer Analysis** (Customer Insights + Market Researcher Agents - Parallel)
+  - Customer segmentation
+  - Buyer persona development
+  - Market context for customer needs
+
+### Strategic Planning Workflow
+**Trigger**: "strategic planning", "strategic assessment", "business strategy"
+
+**Stages**:
+1. **Environmental Scan** (Trend Forecaster + Competitor Analyst Agents - Parallel)
+   - Trend analysis
+   - Competitive landscape
+
+2. **Strategic Synthesis** (SWOT Analyst Agent)
+   - SWOT analysis
+   - Strategic recommendations
+
 ## Configuration
 
 ### Main Configuration
@@ -206,6 +467,8 @@ Key settings:
 
 ### Agent Customization
 Each agent can be customized with:
+- **category**: Main domain category (e.g., `technical/development`, `productivity/writing`)
+- **subcategory**: Activity type (e.g., `analysis`, `creation`, `validation`, `planning`)
 - **triggers**: Keywords that activate the agent
 - **priority**: Execution priority (1 = highest)
 - **capabilities**: What the agent can do
@@ -358,6 +621,8 @@ results/                         # Generated artifacts organized by timestamp
   "agents": {
     "my_agent": {
       "type": "general-purpose",
+      "category": "productivity/custom",
+      "subcategory": "creation",
       "description": "What this agent does",
       "triggers": ["keyword1", "keyword2"],
       "capabilities": ["capability1", "capability2"],
@@ -371,6 +636,32 @@ results/                         # Generated artifacts organized by timestamp
 2. **Create prompt template**: `.claudecode/agents/prompts/my_agent.txt`
 
 3. **Test**: Submit a query with trigger keywords
+
+### Category Guidelines
+
+When adding new agents, choose appropriate categories:
+
+**Technical Categories**:
+- `technical/development` - Code analysis and creation
+- `technical/quality-assurance` - Testing, security, performance
+- `technical/documentation` - Technical docs and comments
+
+**Productivity Categories**:
+- `productivity/writing` - Text composition and editing
+- `productivity/organization` - Planning and task management
+- `productivity/research` - Information gathering and analysis
+
+**Business Categories**:
+- `business/market-analysis` - Market research, competitive intelligence, customer insights, strategic planning
+
+**Subcategories**:
+- `analysis` - Investigating, researching, diagnosing
+- `creation` - Building, writing, implementing
+- `validation` - Testing, reviewing, verifying
+- `planning` - Organizing, scheduling, prioritizing
+- `research` - Market and data research
+- `forecasting` - Trend analysis and predictions
+- `strategic-planning` - Strategic assessment and recommendations
 
 ### Modify Orchestration Logic
 

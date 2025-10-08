@@ -28,18 +28,30 @@ class AgentOrchestrator {
   /**
    * Analyzes user query and determines which agents should handle it
    */
-  analyzeQuery(query) {
+  analyzeQuery(query, options = {}) {
     const lowerQuery = query.toLowerCase();
     const matchedAgents = [];
 
     // Check each agent's triggers
     for (const [agentName, agentConfig] of Object.entries(this.config.agents)) {
+      // Filter by category if specified
+      if (options.category && agentConfig.category !== options.category) {
+        continue;
+      }
+
+      // Filter by subcategory if specified
+      if (options.subcategory && agentConfig.subcategory !== options.subcategory) {
+        continue;
+      }
+
       const score = this.calculateAgentScore(lowerQuery, agentConfig);
       if (score > 0) {
         matchedAgents.push({
           name: agentName,
           config: agentConfig,
-          score: score
+          score: score,
+          category: agentConfig.category,
+          subcategory: agentConfig.subcategory
         });
       }
     }
@@ -53,6 +65,54 @@ class AgentOrchestrator {
     });
 
     return matchedAgents;
+  }
+
+  /**
+   * Gets all agents in a specific category
+   */
+  getAgentsByCategory(category, subcategory = null) {
+    const agents = [];
+
+    for (const [agentName, agentConfig] of Object.entries(this.config.agents)) {
+      if (agentConfig.category === category) {
+        if (!subcategory || agentConfig.subcategory === subcategory) {
+          agents.push({
+            name: agentName,
+            config: agentConfig,
+            category: agentConfig.category,
+            subcategory: agentConfig.subcategory
+          });
+        }
+      }
+    }
+
+    return agents;
+  }
+
+  /**
+   * Lists all available categories
+   */
+  getCategories() {
+    const categories = new Map();
+
+    for (const [agentName, agentConfig] of Object.entries(this.config.agents)) {
+      if (agentConfig.category) {
+        if (!categories.has(agentConfig.category)) {
+          categories.set(agentConfig.category, new Set());
+        }
+        if (agentConfig.subcategory) {
+          categories.get(agentConfig.category).add(agentConfig.subcategory);
+        }
+      }
+    }
+
+    // Convert to plain object
+    const result = {};
+    for (const [category, subcategories] of categories.entries()) {
+      result[category] = Array.from(subcategories);
+    }
+
+    return result;
   }
 
   /**

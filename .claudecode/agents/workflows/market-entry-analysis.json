@@ -1,0 +1,80 @@
+{
+  "name": "market_entry_analysis",
+  "version": "1.0.0",
+  "description": "Focused workflow for analyzing market entry opportunities, including market sizing and competitive assessment",
+  "triggers": [
+    "market entry analysis",
+    "market entry opportunity",
+    "should we enter this market",
+    "market entry feasibility"
+  ],
+  "stages": [
+    {
+      "name": "market_sizing",
+      "description": "Determine market size, growth, and opportunity",
+      "agents": ["market-researcher"],
+      "parallel": false,
+      "objective": "Quantify the market opportunity",
+      "deliverables": [
+        "TAM/SAM/SOM analysis",
+        "Market growth projections",
+        "Market attractiveness assessment",
+        "Entry barriers identification"
+      ]
+    },
+    {
+      "name": "competitive_assessment",
+      "description": "Assess competitive landscape and future trends",
+      "agents": ["competitor-analyst", "trend-forecaster"],
+      "parallel": true,
+      "objective": "Understand competitive dynamics and future state",
+      "deliverables": [
+        "Competitive intensity analysis",
+        "Competitor positioning map",
+        "Market trend forecast",
+        "Competitive gaps and opportunities"
+      ],
+      "dependencies": ["market_sizing"]
+    }
+  ],
+  "final_output": {
+    "format": "Market Entry Analysis Report",
+    "sections": [
+      "Executive Summary & Recommendation",
+      "Market Opportunity Assessment",
+      "Competitive Landscape Analysis",
+      "Future Outlook and Trends",
+      "Entry Strategy Recommendations",
+      "Risk Assessment",
+      "Financial Projections"
+    ]
+  },
+  "decision_framework": {
+    "go_criteria": [
+      "Market size exceeds threshold",
+      "Sustainable competitive advantage possible",
+      "Acceptable risk level",
+      "Positive trend outlook",
+      "Strategic fit with capabilities"
+    ],
+    "no_go_criteria": [
+      "Market too small or declining",
+      "Overcrowded with strong incumbents",
+      "High barriers with limited differentiation",
+      "Unfavorable regulatory environment"
+    ]
+  },
+  "use_cases": [
+    "New geographic market expansion",
+    "New product category entry",
+    "Adjacent market exploration",
+    "Acquisition target evaluation"
+  ],
+  "estimated_duration": "Focused entry assessment",
+  "output_artifacts": [
+    "Go/No-Go recommendation",
+    "Market entry report",
+    "Financial model inputs",
+    "Entry strategy outline"
+  ]
+}
