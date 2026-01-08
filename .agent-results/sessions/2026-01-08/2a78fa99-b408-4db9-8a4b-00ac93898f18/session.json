@@ -1,0 +1,50 @@
+{
+  "session_id": "2a78fa99-b408-4db9-8a4b-00ac93898f18",
+  "timestamp": "2026-01-08T20:15:00Z",
+  "workflow": "oversold-quality-screen",
+  "screen_type": "Oversold Quality Tech (超卖的好公司)",
+  "universe": "High-Value Technology Companies",
+  "status": "completed",
+  "validation_status": "validated",
+  "risk_level": "moderate",
+  "tags": [
+    "workflow:screening",
+    "screen-type:oversold-quality-tech",
+    "sector:technology",
+    "contrarian",
+    "validated:passed",
+    "high-conviction:ADBE"
+  ],
+  "candidates": {
+    "total_screened": 5,
+    "validated": 4,
+    "warnings": 1,
+    "flagged": 0,
+    "stocks": ["ADBE", "MSFT", "AVGO", "ANET", "ORCL"]
+  },
+  "top_pick": {
+    "ticker": "ADBE",
+    "company": "Adobe Inc.",
+    "rsi": 24.6,
+    "roe": "52.3%",
+    "quality_score": "9/10",
+    "conviction": "high"
+  },
+  "quality_metrics": {
+    "average_roe": "43.8%",
+    "average_op_margin": "40.2%",
+    "average_de_ratio": 1.12
+  },
+  "agents_used": [
+    "investment-data-collector",
+    "stock-screener"
+  ],
+  "data_sources": [
+    "Yahoo Finance",
+    "CNBC",
+    "Seeking Alpha",
+    "Schaeffer's Research",
+    "Simply Wall St",
+    "Stock Analysis"
+  ]
+}
