@@ -51,12 +51,15 @@ LocalAgentCrew/
 - **trend-forecaster**: Trend analysis, predictions
 - **swot-analyst**: Strategic assessment
 
-### Investment (5 agents)
+### Investment (8 agents)
 - **investment-data-collector**: Real-time/historical stock data from APIs (Finnhub, Alpha Vantage, FMP)
 - **stock-screener**: Quantitative stock screening and filtering
 - **company-analyst**: Deep fundamental and technical company analysis
 - **portfolio-risk-analyst**: Portfolio risk assessment, VaR, stress testing
 - **investment-report-generator**: Daily reports, alerts, and summaries
+- **investment-validator**: Data validation against authorized APIs, accuracy verification
+- **investment-critic**: Critical thinking, risk evaluation, assumption challenging
+- **investment-results-collector**: Results archival according to web service schema
 
 ## Code Conventions
 
@@ -183,15 +186,16 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 - [x] Phase 1: CLAUDE.md conventions - COMPLETED
 - [x] Phase 2: Skills migration (15/15 skills) - COMPLETED
 - [x] Phase 3: Native subagents (11 agents with model tiering) - COMPLETED
-- [x] Phase 3.5: Investment agents group (5 agents, 5 skills) - COMPLETED
+- [x] Phase 3.5: Investment agents group (8 agents, 8 skills) - COMPLETED
+- [x] Phase 3.6: Investment QA workflow (validator, critic, collector) - COMPLETED
 - [ ] Phase 4: API integration - PENDING
 - [x] Phase 5: Web dashboard - COMPLETED (results-viewer/)
 
 ### Current Subagent Model Tiering
 | Model | Agents | Use Case |
 |-------|--------|----------|
-| Haiku | research, testing, documentation, writing-assistant, task-planner, research-assistant, investment-data-collector, stock-screener, investment-report-generator | Fast, cost-effective tasks |
-| Sonnet | implementation, debug, security, performance, market-analyst, company-analyst, portfolio-risk-analyst | Complex reasoning tasks |
+| Haiku | research, testing, documentation, writing-assistant, task-planner, research-assistant, investment-data-collector, stock-screener, investment-report-generator, investment-results-collector | Fast, cost-effective tasks |
+| Sonnet | implementation, debug, security, performance, market-analyst, company-analyst, portfolio-risk-analyst, investment-validator, investment-critic | Complex reasoning tasks |
 
 ### Investment Agent Details
 | Agent | Model | Purpose |
@@ -201,6 +205,9 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 | company-analyst | Sonnet | Deep fundamental/technical analysis, valuation |
 | portfolio-risk-analyst | Sonnet | VaR, volatility, drawdown, stress testing |
 | investment-report-generator | Haiku | Daily reports, market summaries, alerts |
+| investment-validator | Sonnet | Cross-reference data against authorized APIs, verify accuracy |
+| investment-critic | Sonnet | Critical thinking, challenge assumptions, identify risks |
+| investment-results-collector | Haiku | Archive results to .agent-results/ per schema |
 
 ### Investment Skills
 | Skill | Trigger Examples |
@@ -210,6 +217,9 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 | stock-picker | "find stocks", "value stocks", "stock screen", "oversold quality", "超卖的好公司" |
 | portfolio-risk | "portfolio risk", "VaR analysis", "risk metrics" |
 | market-data | "stock price", "get quote", "historical prices" |
+| investment-validator | "validate data", "verify prices", "check accuracy" |
+| investment-critic | "review analysis", "critical review", "challenge assumptions" |
+| investment-results-collector | "store results", "save analysis", "archive results" |
 
 ### Investment Slash Commands
 | Command | Description |
@@ -275,3 +285,50 @@ portfolio-risk (risk assessment)
     ↓
 investment-daily-report (compile findings)
 ```
+
+### Investment Quality Assurance Workflow
+
+All investment-related outputs now follow a mandatory quality assurance process:
+
+```
+Analysis Complete
+    ↓
+Step 1: investment-validator
+    - Cross-reference prices against authorized APIs (Finnhub, Alpha Vantage, FMP)
+    - Verify financial metrics against SEC filings
+    - Check data freshness and flag stale information
+    - Document validation status (✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED)
+    ↓
+Step 2: investment-critic
+    - Apply critical thinking to investment thesis
+    - Challenge assumptions and identify hidden risks
+    - Detect cognitive biases (confirmation, recency, overconfidence)
+    - Develop bear case scenario
+    - Flag factual errors and logical fallacies
+    ↓
+Step 3: investment-results-collector
+    - Create session with UUID and proper metadata
+    - Store all agent outputs (analysis, validation, critique)
+    - Generate executive summary
+    - Apply tags (symbol, sector, analysis type, validation status)
+    - Update global session index
+    ↓
+Return to User (with validation and critique summaries)
+```
+
+### Validation Standards
+| Data Type | Maximum Age | Acceptable Variance |
+|-----------|-------------|---------------------|
+| Real-time Quote | 15 minutes | < 0.5% |
+| Intraday Data | 1 hour | < 0.5% |
+| Daily Data | 24 hours | < 0.5% |
+| Fundamentals | 30 days | < 5% (P/E), < 0.1% (Revenue) |
+| Technical Indicators | 1 hour | Calculated verification |
+
+### Critical Review Checklist
+- [ ] Factual accuracy verified
+- [ ] Assumptions explicitly stated and challenged
+- [ ] All major risks identified
+- [ ] Cognitive biases assessed
+- [ ] Bear case developed
+- [ ] Logical reasoning validated

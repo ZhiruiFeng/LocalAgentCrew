@@ -149,3 +149,56 @@ Write as a senior analyst presenting to the investment committee:
 - Balanced consideration of bull and bear arguments
 - Clear recommendation with conviction level
 - Professional skepticism where warranted
+
+## Quality Assurance Workflow
+
+After completing the analysis, execute the following quality assurance steps:
+
+### Step 1: Data Validation (investment-validator)
+Invoke the **investment-validator** agent to:
+- Cross-reference all prices against authorized APIs (Finnhub, Alpha Vantage, FMP)
+- Verify financial metrics against SEC filings
+- Check data freshness and flag stale information
+- Document validation status for each data point
+
+Include validation summary in report:
+```markdown
+## Data Validation Status
+✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED
+- Price Data: [Status]
+- Financial Metrics: [Status]
+- Technical Indicators: [Status]
+```
+
+### Step 2: Critical Review (investment-critic)
+Invoke the **investment-critic** agent to:
+- Check for factual errors and inconsistencies
+- Challenge key assumptions in the investment thesis
+- Identify underweighted or missing risks
+- Detect potential cognitive biases
+- Develop alternative bear case scenario
+
+Include critique summary in report:
+```markdown
+## Critical Review
+**Risk Rating**: 🟢 Low | 🟡 Moderate | 🟠 Elevated | 🔴 High
+- Key Assumptions Challenged: [Summary]
+- Risks Identified: [Count] total
+- Bias Assessment: [Clean/Concerns]
+```
+
+### Step 3: Results Storage (investment-results-collector)
+Invoke the **investment-results-collector** agent to:
+- Create session with appropriate metadata
+- Store all agent outputs (analysis, validation, critique)
+- Generate executive summary
+- Apply relevant tags (symbol, sector, analysis type)
+- Update global session index
+
+Include storage confirmation:
+```markdown
+---
+**Session ID**: [UUID]
+**Storage Path**: .agent-results/sessions/[DATE]/[ID]/
+**Agents Used**: investment-data-collector, company-analyst, investment-validator, investment-critic
+```
