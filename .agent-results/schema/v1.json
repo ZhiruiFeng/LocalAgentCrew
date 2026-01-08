@@ -1,0 +1,151 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "LocalAgentCrew Results Schema v1",
+  "version": "1.0.0",
+  "description": "Schema for storing agent workflow results",
+
+  "definitions": {
+    "Session": {
+      "type": "object",
+      "required": ["id", "createdAt", "status", "query"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique session identifier (UUID)",
+          "pattern": "^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of session creation"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 timestamp of last update"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["running", "completed", "failed", "cancelled"],
+          "description": "Current session status"
+        },
+        "query": {
+          "type": "string",
+          "description": "Original user query/task"
+        },
+        "workflow": {
+          "type": "string",
+          "description": "Workflow type if applicable (e.g., speckit, custom)"
+        },
+        "tags": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "User-defined tags for categorization"
+        },
+        "agentsUsed": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of agent names that participated"
+        },
+        "summary": {
+          "type": "string",
+          "description": "Auto-generated summary of results"
+        },
+        "duration": {
+          "type": "integer",
+          "description": "Total duration in milliseconds"
+        },
+        "totalTokens": {
+          "type": "integer",
+          "description": "Total tokens used across all agents"
+        }
+      }
+    },
+
+    "AgentResult": {
+      "type": "object",
+      "required": ["agentName", "createdAt", "status"],
+      "properties": {
+        "agentName": {
+          "type": "string",
+          "description": "Name of the agent (e.g., research, implementation)"
+        },
+        "model": {
+          "type": "string",
+          "enum": ["haiku", "sonnet", "opus"],
+          "description": "Model used for this agent execution"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "completedAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["running", "completed", "failed", "skipped"]
+        },
+        "inputContext": {
+          "type": "string",
+          "description": "Context provided to the agent"
+        },
+        "tokensUsed": {
+          "type": "object",
+          "properties": {
+            "input": { "type": "integer" },
+            "output": { "type": "integer" }
+          }
+        },
+        "toolsUsed": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Tools invoked by this agent"
+        },
+        "filesModified": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Files created or modified"
+        },
+        "error": {
+          "type": "string",
+          "description": "Error message if status is failed"
+        },
+        "category": {
+          "type": "string",
+          "enum": ["technical", "productivity", "business"],
+          "description": "Agent category"
+        }
+      }
+    }
+  },
+
+  "fileStructure": {
+    "description": "Directory structure for results storage",
+    "structure": {
+      ".agent-results/": {
+        "sessions/": {
+          "[YYYY-MM-DD]/": {
+            "[session-id]/": {
+              "session.json": "Session metadata (Session schema)",
+              "query.md": "Original query/task in markdown",
+              "summary.md": "Generated summary of session results",
+              "agents/": {
+                "[agent-name]/": {
+                  "metadata.json": "AgentResult schema",
+                  "result.md": "Main agent output in markdown",
+                  "artifacts/": "Any generated artifacts (files, images)"
+                }
+              }
+            }
+          }
+        },
+        "index.json": "Global index of all sessions for quick access",
+        "schema/": {
+          "v1.json": "This schema file"
+        }
+      }
+    }
+  }
+}
