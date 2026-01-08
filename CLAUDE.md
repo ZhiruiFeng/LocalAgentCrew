@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-LocalAgentCrew is a multi-agent orchestration framework for Claude Code. It provides 15 specialized AI agents across technical development, productivity, and business analysis domains that collaborate on complex tasks.
+LocalAgentCrew is a multi-agent orchestration framework for Claude Code. It provides 20+ specialized AI agents across technical development, productivity, business analysis, and investment analysis domains that collaborate on complex tasks.
 
 ## Architecture
 
@@ -50,6 +50,13 @@ LocalAgentCrew/
 - **customer-insights**: Customer segmentation, personas
 - **trend-forecaster**: Trend analysis, predictions
 - **swot-analyst**: Strategic assessment
+
+### Investment (5 agents)
+- **investment-data-collector**: Real-time/historical stock data from APIs (Finnhub, Alpha Vantage, FMP)
+- **stock-screener**: Quantitative stock screening and filtering
+- **company-analyst**: Deep fundamental and technical company analysis
+- **portfolio-risk-analyst**: Portfolio risk assessment, VaR, stress testing
+- **investment-report-generator**: Daily reports, alerts, and summaries
 
 ## Code Conventions
 
@@ -136,14 +143,33 @@ When using subagents, apply this model selection:
 - [x] Phase 1: CLAUDE.md conventions - COMPLETED
 - [x] Phase 2: Skills migration (15/15 skills) - COMPLETED
 - [x] Phase 3: Native subagents (11 agents with model tiering) - COMPLETED
+- [x] Phase 3.5: Investment agents group (5 agents, 5 skills) - COMPLETED
 - [ ] Phase 4: API integration - PENDING
 - [ ] Phase 5: Web dashboard - PENDING
 
 ### Current Subagent Model Tiering
 | Model | Agents | Use Case |
 |-------|--------|----------|
-| Haiku | research, testing, documentation, writing-assistant, task-planner, research-assistant | Fast, cost-effective tasks |
-| Sonnet | implementation, debug, security, performance, market-analyst | Complex reasoning tasks |
+| Haiku | research, testing, documentation, writing-assistant, task-planner, research-assistant, investment-data-collector, stock-screener, investment-report-generator | Fast, cost-effective tasks |
+| Sonnet | implementation, debug, security, performance, market-analyst, company-analyst, portfolio-risk-analyst | Complex reasoning tasks |
+
+### Investment Agent Details
+| Agent | Model | Purpose |
+|-------|-------|---------|
+| investment-data-collector | Haiku | Fetch data from Finnhub, Alpha Vantage, FMP APIs |
+| stock-screener | Haiku | Filter stocks by value, growth, quality, momentum criteria |
+| company-analyst | Sonnet | Deep fundamental/technical analysis, valuation |
+| portfolio-risk-analyst | Sonnet | VaR, volatility, drawdown, stress testing |
+| investment-report-generator | Haiku | Daily reports, market summaries, alerts |
+
+### Investment Skills
+| Skill | Trigger Examples |
+|-------|------------------|
+| investment-daily-report | "daily report", "morning briefing", "market summary" |
+| stock-analyzer | "analyze AAPL", "company analysis", "research stock" |
+| stock-picker | "find stocks", "value stocks", "stock screen" |
+| portfolio-risk | "portfolio risk", "VaR analysis", "risk metrics" |
+| market-data | "stock price", "get quote", "historical prices" |
 
 ## Key Files
 
@@ -154,3 +180,44 @@ When using subagents, apply this model selection:
 | `.claudecode/agents/scripts/orchestrator.js` | Routing logic |
 | `.claudecode/agents/scripts/hook-handler.js` | Prompt interception |
 | `docs/MIGRATION_ROADMAP.md` | Detailed upgrade plan |
+| `docs/INVESTMENT_RESEARCH_SUMMARY.md` | Investment API research summary |
+| `docs/INVESTMENT_SYSTEM_DESIGN.md` | Investment system architecture |
+| `docs/API_QUICK_REFERENCE.txt` | Quick reference for stock APIs |
+
+## Investment System Quick Start
+
+### Supported APIs
+1. **Finnhub** (Primary) - Real-time quotes, news, fundamentals - 60 calls/min free
+2. **Alpha Vantage** (Historical) - OHLCV data, technical indicators - 5 calls/min free
+3. **Financial Modeling Prep** (Fundamentals) - Financial statements, ratios - 250 calls/day free
+
+### Example Usage
+```
+# Get a stock quote
+"What's the price of AAPL?"
+
+# Analyze a company
+"Analyze Tesla stock for investment"
+
+# Screen for stocks
+"Find me undervalued quality stocks"
+
+# Generate daily report
+"Generate my daily investment report"
+
+# Assess portfolio risk
+"Analyze my portfolio risk"
+```
+
+### Investment Skills Workflow
+```
+User Request
+    ↓
+market-data (fetch quotes, prices)
+    ↓
+stock-picker (screen candidates) OR stock-analyzer (deep analysis)
+    ↓
+portfolio-risk (risk assessment)
+    ↓
+investment-daily-report (compile findings)
+```
