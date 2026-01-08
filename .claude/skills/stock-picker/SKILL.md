@@ -12,6 +12,12 @@ triggers:
   - growth stocks
   - dividend stocks
   - momentum stocks
+  - oversold stocks
+  - oversold quality
+  - beaten down stocks
+  - oversold companies
+  - 超卖
+  - 超卖的好公司
 ---
 
 # Stock Picker Skill
@@ -152,6 +158,45 @@ Activate this skill when the user requests:
 | Debt/Equity | < 0.75 |
 
 **Best For**: Investors seeking undiscovered small cap opportunities
+
+### 8. Oversold Quality Screen (超卖的好公司)
+**Objective**: Find quality companies temporarily beaten down
+
+**Technical Criteria (Oversold)**:
+| Metric | Requirement |
+|--------|-------------|
+| RSI (14) | < 30 |
+| Price vs 52-Week High | < -20% |
+| Price vs 200-day SMA | < -10% |
+| Volume | > 1.5x 20-day avg |
+
+**Quality Criteria (Good Company)**:
+| Metric | Requirement |
+|--------|-------------|
+| ROE | > 15% |
+| Operating Margin | > 10% |
+| Debt/Equity | < 1.0 |
+| Current Ratio | > 1.2 |
+| 3+ Years Positive Earnings | Yes |
+| Free Cash Flow | > 0 |
+
+**Best For**: Contrarian investors seeking mean-reversion opportunities in quality names
+
+### 9. Deep Oversold Quality Screen
+**Objective**: Find extremely oversold quality companies
+
+**Criteria**:
+| Metric | Requirement |
+|--------|-------------|
+| RSI (14) | < 25 |
+| RSI (5) | < 20 |
+| Price vs 52-Week High | < -30% |
+| ROE | > 20% |
+| Operating Margin | > 15% |
+| Debt/Equity | < 0.5 |
+| Current Ratio | > 1.5 |
+
+**Best For**: High-conviction contrarian plays on quality names at extreme levels
 
 ## Scoring System
 

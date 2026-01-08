@@ -207,9 +207,19 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 |-------|------------------|
 | investment-daily-report | "daily report", "morning briefing", "market summary" |
 | stock-analyzer | "analyze AAPL", "company analysis", "research stock" |
-| stock-picker | "find stocks", "value stocks", "stock screen" |
+| stock-picker | "find stocks", "value stocks", "stock screen", "oversold quality", "超卖的好公司" |
 | portfolio-risk | "portfolio risk", "VaR analysis", "risk metrics" |
 | market-data | "stock price", "get quote", "historical prices" |
+
+### Investment Slash Commands
+| Command | Description |
+|---------|-------------|
+| `/investment.analyze` | Deep equity research on specific stocks |
+| `/investment.quote` | Real-time stock quotes |
+| `/investment.screen` | Quantitative stock screening |
+| `/investment.daily` | Daily investment report |
+| `/investment.risk` | Portfolio risk analysis |
+| `/investment.oversold` | Find oversold quality stocks (超卖的好公司) |
 
 ## Key Files
 
@@ -241,6 +251,10 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 
 # Screen for stocks
 "Find me undervalued quality stocks"
+
+# Find oversold quality companies (超卖的好公司)
+"Find oversold quality stocks"
+/investment.oversold
 
 # Generate daily report
 "Generate my daily investment report"

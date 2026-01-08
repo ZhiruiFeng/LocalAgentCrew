@@ -7,7 +7,7 @@
 export type SessionStatus = 'running' | 'completed' | 'failed' | 'cancelled';
 export type AgentStatus = 'running' | 'completed' | 'failed' | 'skipped';
 export type ModelTier = 'haiku' | 'sonnet' | 'opus';
-export type AgentCategory = 'technical' | 'productivity' | 'business';
+export type AgentCategory = 'technical' | 'productivity' | 'business' | 'investment';
 
 // Token usage tracking
 export interface TokenUsage {
@@ -155,6 +155,13 @@ export const AGENT_DEFINITIONS = {
   'customer-insights': { category: 'business', defaultModel: 'sonnet' },
   'trend-forecaster': { category: 'business', defaultModel: 'sonnet' },
   'swot-analyst': { category: 'business', defaultModel: 'sonnet' },
+
+  // Investment agents
+  'investment-data-collector': { category: 'investment', defaultModel: 'haiku' },
+  'stock-screener': { category: 'investment', defaultModel: 'haiku' },
+  'company-analyst': { category: 'investment', defaultModel: 'sonnet' },
+  'portfolio-risk-analyst': { category: 'investment', defaultModel: 'sonnet' },
+  'investment-report-generator': { category: 'investment', defaultModel: 'haiku' },
 } as const;
 
 export type AgentName = keyof typeof AGENT_DEFINITIONS;
