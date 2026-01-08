@@ -130,6 +130,46 @@ When using subagents, apply this model selection:
 | Complex implementation | sonnet | Balance of speed and capability |
 | Strategic planning, orchestration | opus | Maximum reasoning |
 
+## Agent Results Storage
+
+Results from agent workflows are stored in `.agent-results/` with a structured schema:
+
+```
+.agent-results/
+├── sessions/
+│   └── [YYYY-MM-DD]/
+│       └── [session-id]/
+│           ├── session.json     # Session metadata
+│           ├── query.md         # Original query
+│           ├── summary.md       # Generated summary
+│           └── agents/
+│               └── [agent-name]/
+│                   ├── metadata.json  # Agent result metadata
+│                   ├── result.md      # Agent output
+│                   └── artifacts/     # Generated files
+├── index.json                   # Global session index
+└── schema/
+    └── v1.json                  # Schema definition
+```
+
+### Results Viewer Web App
+
+A Next.js web application for viewing results is available in `results-viewer/`:
+
+```bash
+cd results-viewer
+npm install
+npm run dev
+```
+
+Features:
+- Dashboard with statistics
+- Session browser with filters (status, date, agents, tags)
+- File browser for direct access to results
+- Detailed session view with agent outputs
+
+Deploy to Vercel by pointing to the `results-viewer` directory.
+
 ## Migration Status
 
 - [x] Phase 1: Directory structure (.claude/) - COMPLETED
@@ -137,7 +177,7 @@ When using subagents, apply this model selection:
 - [x] Phase 2: Skills migration (15/15 skills) - COMPLETED
 - [x] Phase 3: Native subagents (11 agents with model tiering) - COMPLETED
 - [ ] Phase 4: API integration - PENDING
-- [ ] Phase 5: Web dashboard - PENDING
+- [x] Phase 5: Web dashboard - COMPLETED (results-viewer/)
 
 ### Current Subagent Model Tiering
 | Model | Agents | Use Case |
