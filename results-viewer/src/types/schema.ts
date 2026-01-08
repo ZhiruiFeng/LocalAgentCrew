@@ -162,6 +162,9 @@ export const AGENT_DEFINITIONS = {
   'company-analyst': { category: 'investment', defaultModel: 'sonnet' },
   'portfolio-risk-analyst': { category: 'investment', defaultModel: 'sonnet' },
   'investment-report-generator': { category: 'investment', defaultModel: 'haiku' },
+  'investment-validator': { category: 'investment', defaultModel: 'sonnet' },
+  'investment-critic': { category: 'investment', defaultModel: 'sonnet' },
+  'investment-results-collector': { category: 'investment', defaultModel: 'haiku' },
 } as const;
 
 export type AgentName = keyof typeof AGENT_DEFINITIONS;

@@ -92,3 +92,53 @@ Write as a seasoned professional briefing sophisticated institutional clients:
 ## Output
 
 Generate the complete daily report in markdown format, suitable for distribution to investment committee members.
+
+## Quality Assurance Workflow
+
+After generating the report, execute the following quality assurance steps:
+
+### Step 1: Data Validation (investment-validator)
+Invoke the **investment-validator** agent to:
+- Verify all market data (indices, prices) against authorized APIs
+- Cross-check sector performance figures
+- Validate economic data points
+- Confirm earnings dates and corporate actions
+
+Include validation status:
+```markdown
+## Data Validation Status
+✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED
+- Market Data: [Status]
+- Economic Calendar: [Status]
+- Corporate Actions: [Status]
+```
+
+### Step 2: Critical Review (investment-critic)
+Invoke the **investment-critic** agent to:
+- Review actionable ideas for logical consistency
+- Challenge assumptions in risk assessments
+- Verify claims align with supporting data
+- Flag any overconfident predictions
+
+Include critique summary:
+```markdown
+## Critical Review
+- Factual Accuracy: [Verified/Concerns]
+- Assumptions Validity: [Assessment]
+- Risk Coverage: [Complete/Gaps Identified]
+```
+
+### Step 3: Results Storage (investment-results-collector)
+Invoke the **investment-results-collector** agent to:
+- Archive daily report with date-based tagging
+- Store validation and critique results
+- Generate executive summary for indexing
+- Apply tags: `workflow:daily-report`, `validated:[status]`
+
+Include storage confirmation:
+```markdown
+---
+**Session ID**: [UUID]
+**Report Date**: [YYYY-MM-DD]
+**Storage Path**: .agent-results/sessions/[DATE]/[ID]/
+```

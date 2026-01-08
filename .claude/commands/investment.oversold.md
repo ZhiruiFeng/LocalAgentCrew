@@ -217,9 +217,54 @@ After identifying oversold quality candidates:
 3. **Monitor**: Set price alerts for technical recovery signals
 4. **Patience**: Mean reversion can take weeks to months
 
-## Results Storage
+## Quality Assurance Workflow
 
-Store this screening result in the standard agent results location:
-- Session folder: `.agent-results/sessions/{date}/{session-id}/`
-- Agent output: `agents/stock-screener/result.md`
-- Mark with tags: `["investment", "oversold", "quality", "contrarian"]`
+After completing the oversold screen, execute the following quality assurance steps:
+
+### Step 1: Data Validation (investment-validator)
+Invoke the **investment-validator** agent to:
+- Verify RSI calculations against authorized data sources
+- Cross-check 52-week high/low prices
+- Validate fundamental metrics (ROE, margins, D/E)
+- Confirm volume and liquidity data
+
+Include validation summary:
+```markdown
+## Screening Data Validation
+✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED
+- Technical Indicators (RSI, SMA): [Status]
+- Price Data: [Status]
+- Fundamental Metrics: [Status]
+```
+
+### Step 2: Critical Review (investment-critic)
+Invoke the **investment-critic** agent to:
+- Assess each top candidate for "value trap" risk
+- Challenge the "quality intact" thesis for each stock
+- Identify any candidates with deteriorating fundamentals
+- Flag sector-wide issues that may persist
+
+Include critique summary:
+```markdown
+## Critical Review
+**Value Trap Risk Assessment**:
+- Candidates with Elevated Risk: [List]
+- Candidates with Clear Temporary Selloff: [List]
+- Sector-Wide Concerns: [Description if any]
+```
+
+### Step 3: Results Storage (investment-results-collector)
+Invoke the **investment-results-collector** agent to:
+- Store screen criteria and all candidate data
+- Archive validation and critique assessments
+- Generate executive summary of findings
+- Apply tags: `workflow:screening`, `screen-type:oversold-quality`, `contrarian`, `validated:[status]`
+
+Include storage confirmation:
+```markdown
+---
+**Session ID**: [UUID]
+**Screen Type**: Oversold Quality (超卖的好公司)
+**Storage Path**: .agent-results/sessions/[DATE]/[ID]/
+**Candidates Stored**: [Count]
+```

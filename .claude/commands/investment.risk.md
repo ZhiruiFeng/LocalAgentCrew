@@ -202,3 +202,56 @@ Write as a senior risk professional presenting to the investment committee:
 - Provide clear thresholds and action triggers
 - Balance thoroughness with actionability
 - Acknowledge model uncertainty
+
+## Quality Assurance Workflow
+
+After completing the risk analysis, execute the following quality assurance steps:
+
+### Step 1: Data Validation (investment-validator)
+Invoke the **investment-validator** agent to:
+- Verify all position prices and weights
+- Cross-check VaR calculations against industry benchmarks
+- Validate volatility and correlation inputs
+- Confirm benchmark data accuracy
+
+Include validation summary:
+```markdown
+## Risk Data Validation
+✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED
+- Position Data: [Status]
+- Volatility Metrics: [Status]
+- Correlation Data: [Status]
+- Benchmark Data: [Status]
+```
+
+### Step 2: Critical Review (investment-critic)
+Invoke the **investment-critic** agent to:
+- Challenge VaR model assumptions
+- Evaluate stress scenario completeness
+- Identify risks not captured by quantitative models
+- Assess concentration risk recommendations
+
+Include critique summary:
+```markdown
+## Risk Model Critique
+**Model Limitations Acknowledged**: [Yes/No]
+- VaR Assumption Validity: [Assessment]
+- Stress Scenario Coverage: [Complete/Gaps]
+- Qualitative Risks Considered: [List]
+```
+
+### Step 3: Results Storage (investment-results-collector)
+Invoke the **investment-results-collector** agent to:
+- Archive risk report with full methodology
+- Store validation and critique results
+- Tag for future portfolio monitoring
+- Apply tags: `workflow:portfolio-risk`, `risk-level:[rating]`, `validated:[status]`
+
+Include storage confirmation:
+```markdown
+---
+**Session ID**: [UUID]
+**Risk Analysis Date**: [YYYY-MM-DD]
+**Storage Path**: .agent-results/sessions/[DATE]/[ID]/
+**Portfolio Identifier**: [Portfolio Name/ID]
+```

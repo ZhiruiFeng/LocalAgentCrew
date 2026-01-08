@@ -148,3 +148,54 @@ After presenting results, recommend:
 2. Position sizing considerations
 3. Entry timing based on technicals
 4. Risk management parameters
+
+## Quality Assurance Workflow
+
+After completing the screen, execute the following quality assurance steps:
+
+### Step 1: Data Validation (investment-validator)
+Invoke the **investment-validator** agent to:
+- Verify screening metrics against authorized data sources
+- Cross-check P/E, ROE, and other ratios used in filtering
+- Validate price-based technical filters (SMA, RSI)
+- Flag any data quality issues for specific tickers
+
+Include validation summary:
+```markdown
+## Screening Data Validation
+✅ VALIDATED | ⚠️ WARNINGS | ❌ FLAGGED
+- Fundamental Metrics: [Status]
+- Technical Indicators: [Status]
+- Data Freshness: [Status]
+```
+
+### Step 2: Critical Review (investment-critic)
+Invoke the **investment-critic** agent to:
+- Assess screen methodology for potential biases
+- Review top candidates for hidden risks
+- Challenge the composite scoring weights
+- Identify any crowded or over-owned positions
+
+Include critique summary:
+```markdown
+## Critical Review
+**Methodology Assessment**: [Sound/Concerns]
+- Factor Crowding Risk: [Low/Moderate/High]
+- Hidden Risks in Top Candidates: [List]
+- Diversification Assessment: [Adequate/Concentrated]
+```
+
+### Step 3: Results Storage (investment-results-collector)
+Invoke the **investment-results-collector** agent to:
+- Store screen criteria and methodology
+- Archive full candidate list with scores
+- Save validation and critique results
+- Apply tags: `workflow:screening`, `screen-type:[type]`, `validated:[status]`
+
+Include storage confirmation:
+```markdown
+---
+**Session ID**: [UUID]
+**Screen Type**: [Value/Growth/Quality/etc.]
+**Storage Path**: .agent-results/sessions/[DATE]/[ID]/
+```
