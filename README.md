@@ -56,29 +56,47 @@ The system uses a hook-based architecture that intercepts user prompts, analyzes
 - ✅ ANSI color-coded output
 - ✅ Usage tracking with `[USAGE]` prefix
 
-### Planned Enhancements
-- 🔄 Migration to Claude Code Skills system
-- 🔄 Native subagent support with model tiering
-- 🔄 REST API for results
-- 🔄 Web dashboard for visualization
-- 🔄 Database persistence
+### Migration Progress (Phases 1-3 Complete)
+- ✅ **Skills System**: All 15 agents converted to Skills format
+- ✅ **Native Subagents**: 11 subagent definitions with model tiering
+- ✅ **Model Tiering**: Haiku for fast tasks, Sonnet for complex reasoning
+- 🔄 REST API for results (pending)
+- 🔄 Web dashboard for visualization (pending)
+- 🔄 Database persistence (pending)
+
+### Model Tiering
+| Model | Agents | Use Case |
+|-------|--------|----------|
+| **Haiku** | research, testing, documentation, writing-assistant, task-planner, research-assistant | Fast, cost-effective |
+| **Sonnet** | implementation, debug, security, performance, market-analyst | Complex reasoning |
 
 ## Directory Structure
 
 ```
 LocalAgentCrew/
-├── .claudecode/               # Claude Code configuration
-│   ├── settings.json          # Hook configuration
+├── .claude/                   # Modern Claude Code configuration
+│   ├── settings.json          # Settings with Skills enabled
+│   ├── agents/                # Native subagent definitions (11)
+│   │   ├── research.md        # haiku
+│   │   ├── implementation.md  # sonnet
+│   │   ├── debug.md           # sonnet
+│   │   └── ...
+│   └── skills/                # Auto-discovered Skills (15)
+│       ├── research/SKILL.md
+│       ├── implementation/SKILL.md
+│       └── ...
+├── .claudecode/               # Legacy system (still functional)
 │   └── agents/
 │       ├── config.json        # Agent & workflow definitions
-│       ├── prompts/           # 15 agent prompt templates
+│       ├── prompts/           # Original prompt templates
 │       ├── scripts/           # Orchestration engine (JS)
-│       └── workflows/         # 6 workflow definitions
+│       └── workflows/         # Workflow definitions
 ├── docs/                      # Documentation
 │   ├── ARCHITECTURE.md
 │   ├── GAP_ANALYSIS.md
 │   ├── MIGRATION_ROADMAP.md
 │   └── CLAUDE_CODE_EVOLUTION.md
+├── CLAUDE.md                  # Project conventions for Claude
 ├── AGENT_SYSTEM.md            # Detailed agent documentation
 └── README.md
 ```

@@ -8,3 +8,10 @@ node_modules/
 
 # OS files
 .DS_Store
+
+# Local Claude Code settings (personal overrides)
+.claude/settings.local.json
+
+# Environment files
+.env
+.env.local

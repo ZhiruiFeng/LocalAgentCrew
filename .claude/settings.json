@@ -1,0 +1,14 @@
+{
+  "hooks": {
+    "userPromptSubmit": "node .claudecode/agents/scripts/hook-handler.js"
+  },
+  "permissions": {
+    "allow": [
+      "Skill"
+    ]
+  },
+  "agents": {
+    "enabled": true,
+    "orchestrationMode": "auto"
+  }
+}
