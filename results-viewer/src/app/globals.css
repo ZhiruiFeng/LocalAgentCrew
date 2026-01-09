@@ -114,6 +114,68 @@ body {
   @apply border-l-4 border-gray-300 dark:border-gray-600 pl-4 italic my-4;
 }
 
+/* GFM Tables */
+.markdown-content table {
+  @apply w-full border-collapse my-4;
+}
+
+.markdown-content thead {
+  @apply bg-gray-100 dark:bg-gray-800;
+}
+
+.markdown-content th {
+  @apply px-4 py-2 text-left text-sm font-semibold border border-gray-300 dark:border-gray-600;
+}
+
+.markdown-content td {
+  @apply px-4 py-2 text-sm border border-gray-300 dark:border-gray-600;
+}
+
+.markdown-content tbody tr:nth-child(even) {
+  @apply bg-gray-50 dark:bg-gray-800/50;
+}
+
+/* GFM Task Lists */
+.markdown-content ul.contains-task-list {
+  @apply list-none ml-0;
+}
+
+.markdown-content li.task-list-item {
+  @apply flex items-start gap-2;
+}
+
+.markdown-content input[type="checkbox"] {
+  @apply mt-1.5 h-4 w-4 rounded border-gray-300 text-blue-600;
+}
+
+/* GFM Strikethrough */
+.markdown-content del {
+  @apply text-gray-500 dark:text-gray-400;
+}
+
+/* Horizontal Rules */
+.markdown-content hr {
+  @apply my-6 border-t border-gray-300 dark:border-gray-600;
+}
+
+/* Images */
+.markdown-content img {
+  @apply max-w-full h-auto rounded-lg my-4;
+}
+
+/* Definition Lists (if supported) */
+.markdown-content dl {
+  @apply my-4;
+}
+
+.markdown-content dt {
+  @apply font-semibold mt-2;
+}
+
+.markdown-content dd {
+  @apply ml-4 text-gray-600 dark:text-gray-400;
+}
+
 /* Status badges */
 .status-badge {
   @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
