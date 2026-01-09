@@ -10,7 +10,10 @@ import {
   FileText,
   ChevronRight,
   ChevronDown,
+  Code,
+  Eye,
 } from 'lucide-react';
+import MarkdownRenderer from './MarkdownRenderer';
 
 interface FileTreeViewProps {
   fileTree: FileTreeNode;
@@ -99,6 +102,9 @@ export default function FileTreeView({ fileTree }: FileTreeViewProps) {
   const [selectedNode, setSelectedNode] = useState<FileTreeNode | null>(null);
   const [fileContent, setFileContent] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [showRaw, setShowRaw] = useState(false);
+
+  const isMarkdownFile = (name: string) => name.endsWith('.md');
 
   const handleSelect = async (node: FileTreeNode) => {
     setSelectedNode(node);
@@ -137,20 +143,49 @@ export default function FileTreeView({ fileTree }: FileTreeViewProps) {
       </div>
 
       {/* Content Preview */}
-      <div className="flex-1 overflow-hidden">
+      <div className="flex-1 overflow-hidden flex flex-col">
         {loading ? (
           <div className="flex items-center justify-center h-full">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
           </div>
         ) : selectedNode?.type === 'file' && fileContent ? (
-          <div className="h-full overflow-auto p-4">
-            <div className="text-xs text-gray-500 dark:text-gray-400 mb-2 font-mono">
-              {selectedNode.path}
+          <>
+            {/* File header with path and toggle */}
+            <div className="flex items-center justify-between px-4 py-2 border-b border-gray-200 dark:border-gray-700 bg-gray-50 dark:bg-gray-800">
+              <div className="text-xs text-gray-500 dark:text-gray-400 font-mono truncate">
+                {selectedNode.path}
+              </div>
+              {isMarkdownFile(selectedNode.name) && (
+                <button
+                  onClick={() => setShowRaw(!showRaw)}
+                  className="flex items-center gap-1.5 px-2 py-1 text-xs rounded bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors"
+                  title={showRaw ? 'Show rendered' : 'Show raw'}
+                >
+                  {showRaw ? (
+                    <>
+                      <Eye className="h-3.5 w-3.5" />
+                      <span>Preview</span>
+                    </>
+                  ) : (
+                    <>
+                      <Code className="h-3.5 w-3.5" />
+                      <span>Raw</span>
+                    </>
+                  )}
+                </button>
+              )}
             </div>
-            <pre className="text-sm font-mono bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap">
-              {fileContent}
-            </pre>
-          </div>
+            {/* File content */}
+            <div className="flex-1 overflow-auto p-4">
+              {isMarkdownFile(selectedNode.name) && !showRaw ? (
+                <MarkdownRenderer content={fileContent} />
+              ) : (
+                <pre className="text-sm font-mono bg-gray-50 dark:bg-gray-900 p-4 rounded-lg overflow-x-auto whitespace-pre-wrap">
+                  {fileContent}
+                </pre>
+              )}
+            </div>
+          </>
         ) : (
           <div className="flex items-center justify-center h-full text-gray-400 dark:text-gray-500">
             {selectedNode

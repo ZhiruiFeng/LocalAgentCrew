@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { getSession, getSessionIndex } from '@/lib/storage';
 import { formatDistanceToNow, format } from 'date-fns';
 import { ArrowLeft, Clock, Users, Tag, FileText, AlertCircle, CheckCircle } from 'lucide-react';
-import ReactMarkdown from 'react-markdown';
+import MarkdownRenderer from '@/components/MarkdownRenderer';
 
 export const dynamic = 'force-dynamic';
 
@@ -88,9 +88,7 @@ export default async function SessionPage({ params }: PageProps) {
               <FileText className="h-5 w-5" />
               Summary
             </h2>
-            <div className="prose dark:prose-invert max-w-none markdown-content">
-              <ReactMarkdown>{session.summaryContent}</ReactMarkdown>
-            </div>
+            <MarkdownRenderer content={session.summaryContent} />
           </section>
         )}
 
@@ -148,9 +146,7 @@ export default async function SessionPage({ params }: PageProps) {
                         {agent.error}
                       </div>
                     ) : agent.resultContent ? (
-                      <div className="prose dark:prose-invert max-w-none markdown-content text-sm">
-                        <ReactMarkdown>{agent.resultContent}</ReactMarkdown>
-                      </div>
+                      <MarkdownRenderer content={agent.resultContent} className="text-sm" />
                     ) : (
                       <p className="text-gray-500 dark:text-gray-400 text-sm">
                         No result content available
@@ -207,9 +203,7 @@ export default async function SessionPage({ params }: PageProps) {
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
               Original Query
             </h2>
-            <div className="prose dark:prose-invert max-w-none markdown-content">
-              <ReactMarkdown>{session.queryContent}</ReactMarkdown>
-            </div>
+            <MarkdownRenderer content={session.queryContent} />
           </section>
         )}
       </main>
