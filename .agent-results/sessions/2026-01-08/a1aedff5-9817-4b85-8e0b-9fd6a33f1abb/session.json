@@ -1,0 +1,49 @@
+{
+  "session_id": "a1aedff5-9817-4b85-8e0b-9fd6a33f1abb",
+  "timestamp": "2026-01-08T19:47:00Z",
+  "workflow": "oversold-quality-screen",
+  "screen_type": "Oversold Quality (超卖的好公司)",
+  "status": "completed",
+  "validation_status": "warnings",
+  "risk_level": "high",
+  "tags": [
+    "workflow:screening",
+    "screen-type:oversold-quality",
+    "contrarian",
+    "validated:warnings",
+    "risk:high"
+  ],
+  "candidates": {
+    "total_screened": 6,
+    "validated": 1,
+    "warnings": 3,
+    "flagged": 2,
+    "stocks": ["LW", "CRWD", "MPC", "AZO", "CPB", "DE"]
+  },
+  "agents_used": [
+    "investment-data-collector",
+    "stock-screener",
+    "investment-validator",
+    "investment-critic",
+    "investment-results-collector"
+  ],
+  "data_sources": [
+    "Yahoo Finance",
+    "CNBC",
+    "Morningstar",
+    "Seeking Alpha",
+    "Finnhub (attempted)",
+    "Alpha Vantage (attempted)"
+  ],
+  "critical_findings": {
+    "disqualified": ["CRWD", "AZO"],
+    "reason": "Negative ROE violates quality criteria",
+    "best_candidate": "DE",
+    "value_trap_warnings": ["LW", "CPB"]
+  },
+  "recommendations": {
+    "eliminate": ["LW", "CRWD", "CPB"],
+    "wait": ["MPC", "DE"],
+    "caution": ["AZO"]
+  }
+}
