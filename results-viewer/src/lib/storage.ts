@@ -48,6 +48,26 @@ async function readJson<T>(filePath: string): Promise<T | null> {
 }
 
 /**
+ * Map session.json raw data to Session interface
+ * Handles snake_case to camelCase conversion
+ */
+function mapSessionData(raw: Record<string, unknown>, sessionId: string): Session {
+  return {
+    id: (raw.session_id as string) || (raw.id as string) || sessionId,
+    createdAt: (raw.timestamp as string) || (raw.createdAt as string) || new Date().toISOString(),
+    updatedAt: raw.updatedAt as string | undefined,
+    status: (raw.status as SessionStatus) || 'completed',
+    query: (raw.query as string) || (raw.screen_type as string) || (raw.workflow as string) || 'Unknown query',
+    workflow: raw.workflow as string | undefined,
+    tags: raw.tags as string[] | undefined,
+    agentsUsed: (raw.agents_used as string[]) || (raw.agentsUsed as string[]),
+    summary: raw.summary as string | undefined,
+    duration: raw.duration as number | undefined,
+    totalTokens: raw.totalTokens as number | undefined,
+  };
+}
+
+/**
  * Read markdown file
  */
 async function readMarkdown(filePath: string): Promise<string | null> {
@@ -59,19 +79,74 @@ async function readMarkdown(filePath: string): Promise<string | null> {
 }
 
 /**
+ * Scan sessions directory and build index entries
+ */
+async function scanSessionsDirectory(): Promise<SessionIndexEntry[]> {
+  const sessions: SessionIndexEntry[] = [];
+
+  if (!(await pathExists(SESSIONS_PATH))) {
+    return sessions;
+  }
+
+  // Scan date directories
+  const dates = await fs.readdir(SESSIONS_PATH);
+  for (const date of dates) {
+    const datePath = path.join(SESSIONS_PATH, date);
+    const dateStats = await fs.stat(datePath);
+    if (!dateStats.isDirectory()) continue;
+
+    // Scan session directories
+    const sessionDirs = await fs.readdir(datePath);
+    for (const sessionId of sessionDirs) {
+      const sessionPath = path.join(datePath, sessionId);
+      const sessionStats = await fs.stat(sessionPath);
+      if (!sessionStats.isDirectory()) continue;
+
+      // Read session.json
+      const rawSession = await readJson<Record<string, unknown>>(path.join(sessionPath, 'session.json'));
+      if (!rawSession) continue;
+
+      // Map to SessionIndexEntry
+      sessions.push({
+        id: (rawSession.session_id as string) || (rawSession.id as string) || sessionId,
+        date: date,
+        createdAt: (rawSession.timestamp as string) || (rawSession.createdAt as string) || new Date().toISOString(),
+        status: (rawSession.status as SessionStatus) || 'completed',
+        query: (rawSession.query as string) || (rawSession.screen_type as string) || (rawSession.workflow as string) || 'Unknown query',
+        tags: rawSession.tags as string[] | undefined,
+        agentsUsed: (rawSession.agents_used as string[]) || (rawSession.agentsUsed as string[]),
+        workflow: rawSession.workflow as string | undefined,
+      });
+    }
+  }
+
+  // Sort by createdAt descending
+  sessions.sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
+
+  return sessions;
+}
+
+/**
  * Get the global session index
+ * Falls back to scanning the filesystem if index is empty
  */
 export async function getSessionIndex(): Promise<SessionIndex> {
   const index = await readJson<SessionIndex>(INDEX_PATH);
-  if (!index) {
-    return {
-      schemaVersion: '1.0.0',
-      lastUpdated: new Date().toISOString(),
-      totalSessions: 0,
-      sessions: []
-    };
+
+  // If index exists and has sessions, use it
+  if (index && index.sessions && index.sessions.length > 0) {
+    return index;
   }
-  return index;
+
+  // Fall back to scanning the filesystem
+  const scannedSessions = await scanSessionsDirectory();
+
+  return {
+    schemaVersion: '1.0.0',
+    lastUpdated: new Date().toISOString(),
+    totalSessions: scannedSessions.length,
+    sessions: scannedSessions
+  };
 }
 
 /**
@@ -157,9 +232,10 @@ export async function getSession(sessionId: string, date?: string): Promise<Sess
     return null;
   }
 
-  // Read session metadata
-  const sessionMeta = await readJson<Session>(path.join(sessionPath, 'session.json'));
-  if (!sessionMeta) return null;
+  // Read session metadata (handles snake_case to camelCase mapping)
+  const rawSession = await readJson<Record<string, unknown>>(path.join(sessionPath, 'session.json'));
+  if (!rawSession) return null;
+  const sessionMeta = mapSessionData(rawSession, sessionId);
 
   // Read query and summary content
   const queryContent = await readMarkdown(path.join(sessionPath, 'query.md'));
