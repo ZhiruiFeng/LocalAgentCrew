@@ -1,0 +1,45 @@
+{
+  "agentName": "investment-critic",
+  "model": "sonnet",
+  "createdAt": "2026-01-09T14:55:00Z",
+  "completedAt": "2026-01-09T14:57:12Z",
+  "status": "completed",
+  "inputContext": "Apply critical thinking to daily investment report: challenge assumptions, identify hidden risks, detect cognitive biases, develop bear case scenarios, flag logical fallacies",
+  "tokensUsed": {
+    "input": 7100,
+    "output": 3800
+  },
+  "toolsUsed": [
+    "CriticalAnalysis",
+    "RiskAssessment",
+    "BiasDetection"
+  ],
+  "filesModified": [],
+  "category": "investment",
+  "duration_ms": 2200,
+  "criticalReviewFindings": {
+    "overall_assessment": "SOUND (Post-Revision)",
+    "factual_accuracy": "8/10",
+    "assumptions_validity": "MODERATE",
+    "risk_coverage": "ADEQUATE"
+  },
+  "identified_risks": [
+    "Market complacency (VIX below 15)",
+    "Elevated geopolitical tensions",
+    "Tech sector valuation premium",
+    "Services inflation persistence",
+    "AI capex sustainability"
+  ],
+  "bias_assessment": [
+    "Confirmation bias: Heavy focus on bullish technicals",
+    "Recency bias: Recent jobs data overweighting rate cut expectations",
+    "Overconfidence: Bank earnings positioning appears too confident"
+  ],
+  "bear_case_scenarios": 3,
+  "recommended_cautions": [
+    "Position sizing at 2-3% maximum",
+    "Set stop-losses at 5-7%",
+    "Wait for CPI and bank earnings",
+    "Maintain 10-15% cash buffer"
+  ]
+}

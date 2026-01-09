@@ -1,0 +1,41 @@
+{
+  "agentName": "investment-report-generator",
+  "model": "haiku",
+  "createdAt": "2026-01-09T14:50:00Z",
+  "completedAt": "2026-01-09T14:52:30Z",
+  "status": "completed",
+  "inputContext": "Generate comprehensive daily investment report for January 9, 2026 with market overview, technical analysis, sector rotation, catalysts, and investment ideas",
+  "tokensUsed": {
+    "input": 2800,
+    "output": 5200
+  },
+  "toolsUsed": [
+    "WebFetch",
+    "WebSearch",
+    "Data aggregation"
+  ],
+  "filesModified": [
+    "/home/user/LocalAgentCrew/.agent-results/daily-report-2026-01-09.md"
+  ],
+  "category": "investment",
+  "duration_ms": 2500,
+  "dataSourcesUsed": [
+    "Yahoo Finance",
+    "CNBC",
+    "Trading Economics",
+    "Federal Reserve",
+    "BLS",
+    "Bloomberg",
+    "NY Fed"
+  ],
+  "reportSections": [
+    "Executive Summary",
+    "Global Markets Snapshot",
+    "Market Internals",
+    "Sector Analysis",
+    "Technical Signals",
+    "Fundamental Catalysts",
+    "Risk Monitor",
+    "Actionable Ideas"
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "session_id": "7f3d8e9a-2c1b-4d5e-a8f3-b7c2e9d1a6f4",
+  "timestamp": "2026-01-09T15:30:00Z",
+  "workflow": "daily-report",
+  "report_date": "2026-01-09",
+  "status": "completed",
+  "validation_status": "validated",
+  "tags": [
+    "workflow:daily-report",
+    "report-type:market-summary",
+    "validated:true",
+    "date:2026-01-09",
+    "investment",
+    "daily-briefing"
+  ],
+  "agents_used": [
+    "investment-report-generator",
+    "investment-validator",
+    "investment-critic"
+  ],
+  "data_sources": [
+    "Yahoo Finance",
+    "CNBC",
+    "Trading Economics",
+    "Federal Reserve",
+    "BLS",
+    "Bloomberg",
+    "NY Fed"
+  ],
+  "market_summary": {
+    "sp500_level": 6921.46,
+    "sp500_daily_change": "+0.6%",
+    "sp500_weekly_change": "+1.0%",
+    "market_status": "new all-time high",
+    "overall_sentiment": "bullish with caution"
+  },
+  "key_events": [
+    "S&P 500 reaches new all-time high at 6,944 intraday",
+    "December jobs report disappoints (50K vs 73K expected)",
+    "Unemployment rate ticks down to 4.4%",
+    "Bank earnings season kicks off Jan 13 (JPMorgan)",
+    "Geopolitical tensions rising (Iran, Trump warnings)",
+    "Homebuilders surge 6-8% on Trump mortgage bond directive"
+  ],
+  "critical_focus_areas": [
+    "Bank earnings and expense guidance (Jan 13-17)",
+    "CPI data release (Jan 13)",
+    "Geopolitical risk escalation monitoring",
+    "Valuation risk at 22x forward P/E",
+    "Tech sector AI narrative validation"
+  ],
+  "risk_assessment": {
+    "volatility_level": "LOW",
+    "vix_level": 15.06,
+    "market_breadth": "healthy",
+    "credit_spreads": "tight",
+    "geopolitical_risk": "ELEVATED",
+    "valuation_risk": "MODERATE"
+  },
+  "recommendations": {
+    "immediate_opportunities": [
+      "Bank earnings positioning (JPM, GS)",
+      "Homebuilders momentum (DHI, PHM)",
+      "Defense/Aerospace (RTX, LMT, GD)"
+    ],
+    "watch_list": [
+      "Semiconductor equipment (ASML, LRCX, AMAT)",
+      "Energy majors (XOM, CVX)",
+      "China consumer (BABA, JD, PDD)"
+    ],
+    "avoid": [
+      "Overextended momentum names",
+      "Long-duration bonds",
+      "Small-cap low-quality names"
+    ]
+  },
+  "validation_summary": {
+    "us_market_data": "VALIDATED",
+    "treasury_yields": "VALIDATED",
+    "vix": "VALIDATED",
+    "commodities": "VALIDATED",
+    "european_indices": "VALIDATED",
+    "asian_indices": "VALIDATED - Corrected",
+    "economic_data": "VALIDATED",
+    "overall_status": "VALIDATED (Post-Correction)"
+  },
+  "critical_review": {
+    "overall_assessment": "SOUND (Post-Revision)",
+    "factual_accuracy": "8/10",
+    "assumptions_validity": "MODERATE",
+    "risk_coverage": "ADEQUATE"
+  },
+  "execution_metrics": {
+    "report_generation_time_ms": 2500,
+    "validation_time_ms": 1800,
+    "critical_review_time_ms": 2200,
+    "total_processing_time_ms": 6500
+  }
+}
