@@ -1,8 +1,32 @@
 {
   "schemaVersion": "1.0.0",
-  "lastUpdated": "2026-01-09T15:35:00.000Z",
-  "totalSessions": 3,
+  "lastUpdated": "2026-01-11T12:00:00.000Z",
+  "totalSessions": 4,
   "sessions": [
+    {
+      "id": "c8ba611a-f65f-41e9-9179-ce5531fd0349",
+      "date": "2026-01-11",
+      "createdAt": "2026-01-11T12:00:00Z",
+      "status": "completed",
+      "query": "Daily Investment Report - January 11, 2026",
+      "tags": [
+        "workflow:daily-report",
+        "report-type:market-summary",
+        "validated:flagged",
+        "date:2026-01-11",
+        "investment",
+        "daily-briefing",
+        "theme:great-rotation",
+        "market:us",
+        "market:global"
+      ],
+      "agentsUsed": [
+        "investment-data-collector",
+        "investment-validator",
+        "investment-critic"
+      ],
+      "workflow": "daily-report"
+    },
     {
       "id": "2a78fa99-b408-4db9-8a4b-00ac93898f18",
       "date": "2026-01-08",
