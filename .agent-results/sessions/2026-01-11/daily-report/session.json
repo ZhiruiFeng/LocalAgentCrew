@@ -1,0 +1,125 @@
+{
+  "session_id": "c8ba611a-f65f-41e9-9179-ce5531fd0349",
+  "type": "daily-investment-report",
+  "date": "2026-01-11",
+  "created_at": "2026-01-11T12:00:00Z",
+  "status": "completed",
+  "validation_status": "flagged",
+  "tags": [
+    "workflow:daily-report",
+    "validated:flagged",
+    "date:2026-01-11",
+    "market:us",
+    "market:global",
+    "analysis:sector-rotation",
+    "theme:great-rotation"
+  ],
+  "agents_used": [
+    {
+      "agent": "investment-data-collector",
+      "model": "haiku",
+      "tasks": [
+        "US market indices",
+        "Global market data",
+        "Sector performance",
+        "Economic calendar"
+      ]
+    },
+    {
+      "agent": "investment-validator",
+      "model": "sonnet",
+      "tasks": [
+        "Market data validation",
+        "Economic calendar verification",
+        "Cross-reference pricing data"
+      ]
+    },
+    {
+      "agent": "investment-critic",
+      "model": "sonnet",
+      "tasks": [
+        "Critical analysis",
+        "Bias detection",
+        "Risk assessment review",
+        "Bear case development"
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "file": "report.md",
+      "type": "daily-report",
+      "description": "Comprehensive daily investment report"
+    },
+    {
+      "file": "validation-report.md",
+      "type": "validation",
+      "description": "Data validation results"
+    },
+    {
+      "file": "critique.md",
+      "type": "critique",
+      "description": "Critical review and bias assessment"
+    }
+  ],
+  "summary": {
+    "market_status": "Weekend - US Markets Closed",
+    "key_indices": {
+      "sp500": {
+        "level": 6966.28,
+        "change": "+0.65%",
+        "status": "all-time-high"
+      },
+      "dow": {
+        "level": 49320.13,
+        "change": "+0.66%",
+        "status": "record-high",
+        "validation_note": "Flagged - verify against 49504.07"
+      },
+      "nasdaq": {
+        "level": 23477.05,
+        "change": "-0.45%",
+        "validation_note": "Flagged - verify against 23671.35 (+0.81%)"
+      },
+      "russell2000": {
+        "level": 2544.35,
+        "change": "-0.14%",
+        "ytd": "+3.1%"
+      },
+      "vix": {
+        "level": 15.06,
+        "interpretation": "Low volatility - complacency"
+      }
+    },
+    "key_themes": [
+      "The Great Rotation - capital migration from mega-cap tech to small-caps and cyclicals",
+      "Bank earnings week begins - JPM, GS, MS reporting",
+      "CPI release Tuesday January 13 - critical for Fed expectations",
+      "97% probability no rate cut at January FOMC (flagged - verify 83-87%)"
+    ],
+    "validation_summary": {
+      "status": "flagged",
+      "score": "57%",
+      "critical_issues": 3,
+      "warnings": 9,
+      "validated": 12
+    },
+    "critique_summary": {
+      "overall_score": "4.5/10",
+      "factual_accuracy": "5/10",
+      "risk_assessment": "4/10",
+      "key_concerns": [
+        "Recency bias in rotation thesis (2 weeks of data)",
+        "Bear case underdeveloped (-3.8% vs suggested -15-25%)",
+        "Missing recession probability analysis",
+        "Gold +60% rally unexplained"
+      ]
+    }
+  },
+  "next_actions": [
+    "Correct flagged market data before distribution",
+    "Verify Fed rate cut probability against CME FedWatch",
+    "Monitor CPI release Tuesday 8:30 ET",
+    "Track bank earnings Tuesday-Thursday"
+  ]
+}
