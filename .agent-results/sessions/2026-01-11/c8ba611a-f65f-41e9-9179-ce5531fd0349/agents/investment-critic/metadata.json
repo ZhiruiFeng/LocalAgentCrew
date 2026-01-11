@@ -1,0 +1,48 @@
+{
+  "agentName": "investment-critic",
+  "model": "sonnet",
+  "createdAt": "2026-01-11T12:03:00Z",
+  "completedAt": "2026-01-11T12:06:00Z",
+  "status": "completed",
+  "inputContext": "Perform critical review of daily investment report - challenge assumptions, identify biases, develop bear case",
+  "tokensUsed": {
+    "input": 8200,
+    "output": 5100
+  },
+  "toolsUsed": [
+    "Read",
+    "Write"
+  ],
+  "filesModified": [
+    "critique.md"
+  ],
+  "category": "investment",
+  "duration_ms": 3000,
+  "criticalReview": {
+    "factual_accuracy": "5/10",
+    "risk_assessment": "4/10",
+    "logical_consistency": "5/10",
+    "bias_control": "4/10",
+    "overall_score": "4.5/10"
+  },
+  "biases_detected": [
+    "Recency Bias - rotation thesis from 2 weeks of data",
+    "Confirmation Bias - data woven into bullish narrative",
+    "Narrative Fallacy - Great Rotation may be overfitting noise",
+    "Optimism Bias - 85% positive scenario probability",
+    "Overconfidence - precise probabilities without confidence intervals"
+  ],
+  "key_concerns": [
+    "Gold +60% 2025 rally unexplained",
+    "VIX spike to 60+ history not contextualized",
+    "Bear case underdeveloped (-3.8% vs -15-25%)",
+    "Missing recession probability estimate"
+  ],
+  "recommendations": [
+    "Develop realistic bear case with 30%+ probability",
+    "Add credit cycle analysis",
+    "Include small-cap quality screening",
+    "Resolve logical contradictions"
+  ],
+  "review_timestamp": "2026-01-11T12:06:00Z"
+}

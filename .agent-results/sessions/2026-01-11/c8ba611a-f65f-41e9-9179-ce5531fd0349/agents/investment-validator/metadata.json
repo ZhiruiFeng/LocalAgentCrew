@@ -1,0 +1,40 @@
+{
+  "agentName": "investment-validator",
+  "model": "sonnet",
+  "createdAt": "2026-01-11T12:03:00Z",
+  "completedAt": "2026-01-11T12:05:30Z",
+  "status": "completed",
+  "inputContext": "Validate all data points in daily investment report against authorized data sources",
+  "tokensUsed": {
+    "input": 7800,
+    "output": 4200
+  },
+  "toolsUsed": [
+    "WebSearch",
+    "WebFetch",
+    "Read"
+  ],
+  "filesModified": [
+    "validation-report.md"
+  ],
+  "category": "investment",
+  "duration_ms": 2500,
+  "validationResults": {
+    "sp500": "VALIDATED",
+    "dow_jones": "FLAGGED - verify 49320 vs 49504",
+    "nasdaq": "FLAGGED - verify direction (-0.45% vs +0.81%)",
+    "russell_2000": "WARNING - understated",
+    "vix": "VALIDATED",
+    "gold": "WARNING - slight discrepancy",
+    "fed_probability": "WARNING - 97% vs 83-87%",
+    "cpi_date": "VALIDATED",
+    "ppi_date": "FLAGGED - Jan 13 vs Jan 14",
+    "earnings_dates": "VALIDATED"
+  },
+  "validation_score": "57%",
+  "items_validated": 12,
+  "items_total": 21,
+  "critical_issues": 3,
+  "warnings": 6,
+  "validation_timestamp": "2026-01-11T12:05:30Z"
+}

@@ -1,0 +1,35 @@
+{
+  "agentName": "investment-data-collector",
+  "model": "haiku",
+  "createdAt": "2026-01-11T12:00:00Z",
+  "completedAt": "2026-01-11T12:02:30Z",
+  "status": "completed",
+  "inputContext": "Collect global market data, sector performance, economic calendar, and earnings dates for daily investment report",
+  "tokensUsed": {
+    "input": 4200,
+    "output": 8500
+  },
+  "toolsUsed": [
+    "WebSearch",
+    "WebFetch"
+  ],
+  "filesModified": [],
+  "category": "investment",
+  "duration_ms": 2500,
+  "dataCollected": {
+    "us_indices": ["S&P 500", "Dow Jones", "Nasdaq", "Russell 2000"],
+    "global_indices": ["FTSE 100", "DAX", "CAC 40", "Nikkei 225", "Hang Seng", "Shanghai"],
+    "sectors": ["XLU", "XLB", "XLE", "XLI", "XLF", "XLK", "XLC", "XLV", "XLY", "XLP", "XLRE"],
+    "commodities": ["Gold", "WTI Crude", "Bitcoin"],
+    "currencies": ["EUR/USD", "USD/JPY", "GBP/USD"],
+    "economic_calendar": ["CPI Jan 13", "PPI Jan 14", "Retail Sales Jan 14"],
+    "earnings_calendar": ["JPM", "DAL", "BAC", "WFC", "C", "GS", "MS", "BLK"]
+  },
+  "data_sources": [
+    "Yahoo Finance",
+    "CNBC",
+    "Bloomberg",
+    "Trading Economics",
+    "Seeking Alpha"
+  ]
+}
