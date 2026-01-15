@@ -1,0 +1,20 @@
+{
+  "agentName": "investment-critic",
+  "model": "sonnet",
+  "createdAt": "2026-01-15T15:22:00Z",
+  "completedAt": "2026-01-15T15:30:00Z",
+  "status": "completed",
+  "inputContext": "Apply critical thinking to daily investment report. Challenge assumptions, identify hidden risks, detect cognitive biases (confirmation, recency, overconfidence), develop bear case scenario, flag factual errors and logical fallacies.",
+  "tokensUsed": {
+    "input": 3400,
+    "output": 1300
+  },
+  "toolsUsed": [
+    "WebSearch",
+    "Analysis"
+  ],
+  "filesModified": [
+    "/home/user/LocalAgentCrew/.agent-results/sessions/2026-01-15/critical-review.md"
+  ],
+  "category": "investment"
+}

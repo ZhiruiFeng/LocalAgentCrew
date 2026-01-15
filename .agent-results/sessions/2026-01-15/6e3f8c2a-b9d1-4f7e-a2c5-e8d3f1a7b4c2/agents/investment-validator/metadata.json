@@ -1,0 +1,23 @@
+{
+  "agentName": "investment-validator",
+  "model": "sonnet",
+  "createdAt": "2026-01-15T15:15:00Z",
+  "completedAt": "2026-01-15T15:22:00Z",
+  "status": "completed",
+  "inputContext": "Validate daily investment report for January 15, 2026. Cross-reference prices against authorized APIs (Finnhub, Alpha Vantage, FMP). Verify financial metrics against SEC filings. Check data freshness and flag stale information.",
+  "tokensUsed": {
+    "input": 3400,
+    "output": 1800
+  },
+  "toolsUsed": [
+    "WebFetch",
+    "MarketDataAPI",
+    "Finnhub",
+    "AlphaVantage",
+    "FMP"
+  ],
+  "filesModified": [
+    "/home/user/LocalAgentCrew/.agent-results/sessions/2026-01-15/validation-findings.md"
+  ],
+  "category": "investment"
+}
