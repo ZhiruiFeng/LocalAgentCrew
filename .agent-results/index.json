@@ -1,8 +1,36 @@
 {
   "schemaVersion": "1.0.0",
-  "lastUpdated": "2026-01-13T16:40:00.000Z",
-  "totalSessions": 5,
+  "lastUpdated": "2026-01-15T15:30:00.000Z",
+  "totalSessions": 6,
   "sessions": [
+    {
+      "id": "6e3f8c2a-b9d1-4f7e-a2c5-e8d3f1a7b4c2",
+      "date": "2026-01-15",
+      "createdAt": "2026-01-15T15:00:00Z",
+      "status": "completed",
+      "query": "Generate daily investment report for January 15, 2026",
+      "tags": [
+        "workflow:daily-report",
+        "date:2026-01-15",
+        "validated:warnings",
+        "reviewed:moderate",
+        "investment",
+        "daily-briefing",
+        "report-type:market-summary",
+        "market:us",
+        "market:global",
+        "market:asia-pacific",
+        "theme:tsmc-ai-rally",
+        "theme:geopolitical-de-escalation",
+        "theme:manufacturing-recovery"
+      ],
+      "agentsUsed": [
+        "investment-report-generator",
+        "investment-validator",
+        "investment-critic"
+      ],
+      "workflow": "daily-report"
+    },
     {
       "id": "abc297a8-e5ed-4841-8c57-e0425dcc7cb5",
       "date": "2026-01-13",

@@ -1,0 +1,31 @@
+{
+  "id": "6e3f8c2a-b9d1-4f7e-a2c5-e8d3f1a7b4c2",
+  "createdAt": "2026-01-15T15:00:00Z",
+  "updatedAt": "2026-01-15T15:30:00Z",
+  "status": "completed",
+  "query": "Generate daily investment report for January 15, 2026",
+  "workflow": "daily-report",
+  "tags": [
+    "workflow:daily-report",
+    "date:2026-01-15",
+    "validated:warnings",
+    "reviewed:moderate",
+    "investment",
+    "daily-briefing",
+    "report-type:market-summary",
+    "market:us",
+    "market:global",
+    "market:asia-pacific",
+    "theme:tsmc-ai-rally",
+    "theme:geopolitical-de-escalation",
+    "theme:manufacturing-recovery"
+  ],
+  "agentsUsed": [
+    "investment-report-generator",
+    "investment-validator",
+    "investment-critic"
+  ],
+  "summary": "Daily investment report for January 15, 2026 generated and reviewed. Markets rallied on TSMC earnings (+35% profit, $52-56B capex plan for 2026) driving semiconductor sector gains. US economic data came in strong: jobless claims fell to 198K, Empire State Manufacturing surged to 7.7, Philly Fed hit 12.6. Geopolitical tensions with Iran eased, sending oil down 3%. Validation identified and corrected data errors (Nikkei 225 level, Treasury yield precision). Critical review rated report as Moderate quality with constructive bias warning - overall favorable market tone may understate risks.",
+  "duration": 1800000,
+  "totalTokens": 8500
+}
