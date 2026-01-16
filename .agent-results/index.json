@@ -1,7 +1,7 @@
 {
   "schemaVersion": "1.0.0",
   "lastUpdated": "2026-01-15T15:30:00.000Z",
-  "totalSessions": 5,
+  "totalSessions": 6,
   "sessions": [
     {
       "id": "6e3f8c2a-b9d1-4f7e-a2c5-e8d3f1a7b4c2",
@@ -28,6 +28,33 @@
         "investment-report-generator",
         "investment-validator",
         "investment-critic"
+      ],
+      "workflow": "daily-report"
+    },
+    {
+      "id": "abc297a8-e5ed-4841-8c57-e0425dcc7cb5",
+      "date": "2026-01-13",
+      "createdAt": "2026-01-13T16:00:00Z",
+      "status": "completed",
+      "query": "Daily Investment Report - January 13, 2026",
+      "tags": [
+        "workflow:daily-report",
+        "report-type:market-summary",
+        "validated:warnings",
+        "date:2026-01-13",
+        "investment",
+        "daily-briefing",
+        "theme:cpi-beat",
+        "theme:bank-earnings",
+        "market:us",
+        "market:global"
+      ],
+      "agentsUsed": [
+        "investment-data-collector",
+        "investment-report-generator",
+        "investment-validator",
+        "investment-critic",
+        "investment-results-collector"
       ],
       "workflow": "daily-report"
     },
