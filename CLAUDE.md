@@ -184,9 +184,9 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 
 - [x] Phase 1: Directory structure (.claude/) - COMPLETED
 - [x] Phase 1: CLAUDE.md conventions - COMPLETED
-- [x] Phase 2: Skills migration (15/15 skills) - COMPLETED
+- [x] Phase 2: Skills migration (16/16 skills) - COMPLETED
 - [x] Phase 3: Native subagents (11 agents with model tiering) - COMPLETED
-- [x] Phase 3.5: Investment agents group (8 agents, 8 skills) - COMPLETED
+- [x] Phase 3.5: Investment agents group (8 agents, 9 skills) - COMPLETED
 - [x] Phase 3.6: Investment QA workflow (validator, critic, collector) - COMPLETED
 - [ ] Phase 4: API integration - PENDING
 - [x] Phase 5: Web dashboard - COMPLETED (results-viewer/)
@@ -213,6 +213,7 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 | Skill | Trigger Examples |
 |-------|------------------|
 | investment-daily-report | "daily report", "morning briefing", "market summary" |
+| investment-weekly-report | "weekly report", "weekly summary", "week in review", "weekly briefing" |
 | stock-analyzer | "analyze AAPL", "company analysis", "research stock" |
 | stock-picker | "find stocks", "value stocks", "stock screen", "oversold quality", "超卖的好公司" |
 | portfolio-risk | "portfolio risk", "VaR analysis", "risk metrics" |
@@ -228,6 +229,7 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 | `/investment.quote` | Real-time stock quotes |
 | `/investment.screen` | Quantitative stock screening |
 | `/investment.daily` | Daily investment report |
+| `/investment.weekly` | Weekly investment report with trend analysis |
 | `/investment.risk` | Portfolio risk analysis |
 | `/investment.oversold` | Find oversold quality stocks (超卖的好公司) |
 
@@ -269,6 +271,10 @@ Deploy to Vercel by pointing to the `results-viewer` directory.
 # Generate daily report
 "Generate my daily investment report"
 
+# Generate weekly report
+"Generate my weekly investment report"
+/investment.weekly
+
 # Assess portfolio risk
 "Analyze my portfolio risk"
 ```
@@ -283,7 +289,9 @@ stock-picker (screen candidates) OR stock-analyzer (deep analysis)
     ↓
 portfolio-risk (risk assessment)
     ↓
-investment-daily-report (compile findings)
+investment-daily-report (compile daily findings)
+    ↓
+investment-weekly-report (aggregate weekly trends & outlook)
 ```
 
 ### Investment Quality Assurance Workflow
